@@ -1,0 +1,3048 @@
+{
+  "version": 2000000000000,
+  "settings": {
+    "fonts": {
+      "preset": "playfair_inter",
+      "heading": "'Playfair Display', Georgia, serif",
+      "body": "'Inter', system-ui, sans-serif"
+    },
+    "colors": {
+      "wine": "#6b2430",
+      "gold": "#c8942f"
+    },
+    "brand": {
+      "word1": "Picchio",
+      "word2": "Cocktail"
+    },
+    "texts": {
+      "heroEyebrow": "Dijital Menü",
+      "heroTitle": "Menü",
+      "heroSubtitle": "Görüntülemek istediğiniz kategoriyi seçin.",
+      "loadingText": "Menü hazırlanıyor...",
+      "navMenu": "Menü",
+      "navContact": "İletişim",
+      "navReserve": "Rezervasyon",
+      "contactTitle": "Rezervasyon & Bilgi",
+      "contactSubtitle": "İletişim",
+      "whatsappBtn": "WhatsApp"
+    },
+    "social": {
+      "instagram": "https://instagram.com"
+    },
+    "contact": {
+      "whatsapp": "+905001234567",
+      "phone": "+905001234567",
+      "address": "Bebek Mah. Cevdet Paşa Cad. No: 42, Beşiktaş / İstanbul",
+      "mapsUrl": "https://maps.google.com",
+      "workingHours": "Her gün: 12:00 – 02:00"
+    },
+    "announcements": {
+      "summerBanner": {
+        "active": true,
+        "title": "Picchio Signature Kokteyller",
+        "text": "Özel formüller, premium malzemeler — her gün taze hazırlanır."
+      },
+      "happyHour": {
+        "active": false,
+        "title": "Happy Hour Kampanyaları",
+        "text": "1+1 teklifler — her gün farklı kampanya, çift tat tek fiyat!"
+      }
+    }
+  },
+  "categories": [
+    {
+      "id": "cat-alkolsuz-mokteyller",
+      "name": "Alkolsüz Kokteyller",
+      "titleEn": "Mocktails",
+      "children": [],
+      "items": [
+        {
+          "title": "BERRY HIBISCUS",
+          "titleEn": null,
+          "description": "Böğürtlen, frambuaz, taze demlenmiş ebegümeci (hibiscus) çayı, limon suyu ve buz.",
+          "descriptionEn": "Blackberry, raspberry, freshly brewed hibiscus tea, lemon juice, and ice.",
+          "price": "249 ₺",
+          "tastesLike": [
+            "Tatlı",
+            "Ekşi",
+            "Ferah"
+          ],
+          "featured": true,
+          "nutrition": {
+            "portionNote": "330 ml",
+            "caloriesKcal": 120,
+            "proteinG": 0,
+            "carbsG": 28,
+            "fatG": 0,
+            "allergens": [],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "CICI BEBE",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "249 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "MANGO PASSION FRUIT",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "249 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "MILKSHAKE",
+          "titleEn": null,
+          "description": "Çikolata, Çilek, Vanilya, Karamel",
+          "descriptionEn": null,
+          "price": "249 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "COOL LIME",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "249 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        }
+      ],
+      "sideText": null,
+      "insideNote": null
+    },
+    {
+      "id": "cat-kahveler---sicak-i--ecekler",
+      "name": "Kahve & Sıcak İçecekler",
+      "titleEn": "Coffee & Hot Drinks",
+      "children": [],
+      "items": [
+        {
+          "title": "CARAMEL LATTE",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "209 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "CARAMEL MACCHIATO (SICAK - SOGUK)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "229 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "CARAMEL MOCHA",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "229 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "COCONUT LATTE",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "209 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "FLAT WHITE",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "209 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "MOCHA",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "229 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "VANILLA LATTE",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "209 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "WHITE MOCHA",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "229 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "Bitki Çayları",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "149 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "AMERICANO (SICAK - SOGUK)",
+          "titleEn": null,
+          "description": "Espresso · Sıcak Su",
+          "descriptionEn": null,
+          "price": "189 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "CAPPUCCINO",
+          "titleEn": null,
+          "description": "Espresso · Buharda Süt · Süt Köpüğü",
+          "descriptionEn": null,
+          "price": "199 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "ESPRESSO DOUBLE",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "179 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "ESPRESSO SINGLE",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "169 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "LATTE",
+          "titleEn": null,
+          "description": "Espresso · Buharda Süt",
+          "descriptionEn": null,
+          "price": "199 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "MOCHA (Klasik / White / Caramel)",
+          "titleEn": null,
+          "description": "Espresso · Çikolata · Süt",
+          "descriptionEn": null,
+          "price": "229 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "Salep",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "149 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "milk"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Sıcak Çikolata",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "149 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "Türk Kahvesi",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "149 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        }
+      ],
+      "sideText": null,
+      "insideNote": null
+    },
+    {
+      "id": "cat-votka-s",
+      "name": "Votka",
+      "titleEn": "Vodka",
+      "children": [],
+      "items": [
+        {
+          "title": "Absolut (5cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "300 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Absolut Citron (5cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "300 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Absolut Raspberry (5cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "300 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Absolut Vanilia (5cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "300 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Belvedere (5cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "450 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Smirnoff (5cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "300 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        }
+      ],
+      "sideText": null,
+      "insideNote": null
+    },
+    {
+      "id": "cat-rom-s---cognac",
+      "name": "Rom & Konyak",
+      "titleEn": "Rum & Cognac",
+      "children": [],
+      "items": [
+        {
+          "title": "Bacardi (5cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "350 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Captain Morgan (5cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "350 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Havana (5cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "350 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Hennessy",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "Tek: 400 ₺ / Duble: 600 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        }
+      ],
+      "sideText": null,
+      "insideNote": null
+    },
+    {
+      "id": "cat-li-k-r---vermut",
+      "name": "Likör & Vermut",
+      "titleEn": "Liqueurs & Vermouth",
+      "children": [],
+      "items": [
+        {
+          "title": "Baileys",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "275 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "milk",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Malibu",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "250 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Kahlua",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "250 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Limoncello",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "250 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Bols Şeftali Likörü",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "250 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Disaronno",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "300 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Nazen Nane Likörü",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "250 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Garrone Triple Sec",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "300 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Garrone Bianco",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "250 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Garrone Extra Dry",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "250 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Garrone Rosso",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "250 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        }
+      ],
+      "sideText": null,
+      "insideNote": null
+    },
+    {
+      "id": "cat-alkoll--sicak-kahveler",
+      "name": "Alkollü Sıcak Kahveler",
+      "titleEn": "Alcoholic Hot Coffees",
+      "children": [],
+      "items": [
+        {
+          "title": "BAILEYS COFFEE",
+          "titleEn": null,
+          "description": "Baileys · Espresso · Krema",
+          "descriptionEn": null,
+          "price": "399 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "milk",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "IRISH COFFEE",
+          "titleEn": null,
+          "description": "İrlanda Whiskey · Espresso · Krema",
+          "descriptionEn": null,
+          "price": "399 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "PICCHIO COFFEE",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "399 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        }
+      ],
+      "sideText": null,
+      "insideNote": null
+    },
+    {
+      "id": "cat-gin-s",
+      "name": "Cin",
+      "titleEn": "Gin",
+      "children": [],
+      "items": [
+        {
+          "title": "Beefeater (5cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "300 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Beefeater Pink (5cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "300 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Bombay Sapphire (5cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "400 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Gordon's (5cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "300 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        }
+      ],
+      "sideText": null,
+      "insideNote": null
+    },
+    {
+      "id": "cat-classic-kokteyl",
+      "name": "Klasik Kokteyller",
+      "titleEn": "Classic Cocktails",
+      "children": [],
+      "items": [
+        {
+          "title": "Blue Lagoon",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Boulevardier",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "499 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Campari Negroni",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "499 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Cosmopolitan",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Dry Martini",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Espresso Martini",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "milk",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Gin Fizz",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Long Island Ice Tea",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "499 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Lynchburg Lemonade",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Margarita",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Mojito",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Old Fashioned",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Pina Colada",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Sex on the Beach",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Tequila Sunrise",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Whiskey Sour",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        }
+      ],
+      "sideText": null,
+      "insideNote": null
+    },
+    {
+      "id": "cat--i--e-bi-ralar",
+      "name": "Şişe Biralar",
+      "titleEn": "Bottled Beers",
+      "children": [],
+      "items": [
+        {
+          "title": "CARLSBERG ELEPHANT",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "250 ₺",
+          "tastesLike": [],
+          "featured": true,
+          "nutrition": null
+        },
+        {
+          "title": "TUBORG SMOOTH",
+          "titleEn": null,
+          "description": "Türkiye’nin ilk Single Malt Birası",
+          "descriptionEn": null,
+          "price": "219 ₺",
+          "tastesLike": [],
+          "featured": true,
+          "nutrition": null
+        },
+        {
+          "title": "Carlsberg (50cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "209 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Carlsberg Luna (50cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "219 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Tuborg Gold (50cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "199 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Tuborg Filtresiz (50cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "199 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Tuborg Ice (33cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "199 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Frederik Brown Ale (35cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "229 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Frederik India Pale Ale (35cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "229 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Frederik Yakima IPA (35cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "229 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Frederik Tropic IPA (35cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "229 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Frederik Marzen Lager (35cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "229 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Frederik NEIPA (35cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "229 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Frederik Wheat IPA (35cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "229 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "1664 Blanc (33cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "229 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Weihenstephan Hefeweissbier (33cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "239 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Desperados (33cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "239 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Sol (33cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "239 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Guinness Kutu (44cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "279 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Mexican Bardak",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "25 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        }
+      ],
+      "sideText": null,
+      "insideNote": null
+    },
+    {
+      "id": "cat-picchio-special-s---aperitifs",
+      "name": "Picchio Specials",
+      "titleEn": "Picchio Specials & Aperitifs",
+      "children": [],
+      "items": [
+        {
+          "title": "Casper",
+          "titleEn": null,
+          "description": "MUTFAĞIMIZ İŞLETMEMİZ KAPANANA KADAR AÇIKTIR",
+          "descriptionEn": null,
+          "price": "449 ₺ / 0 ₺",
+          "tastesLike": [],
+          "featured": true,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "COFFEINA",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "499 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Fuego",
+          "titleEn": null,
+          "description": "MUTFAĞIMIZ İŞLETMEMİZ KAPANANA KADAR AÇIKTIR",
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": true,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "GRINCH",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "HELLIOS",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "PICCHIO STAR",
+          "titleEn": null,
+          "description": "MUTFAĞIMIZ İŞLETMEMİZ KAPANANA KADAR AÇIKTIR",
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": true,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "PICCHIO THE SECRET",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "APEROL SPRITZ",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "CAMPARI SPRITZ",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "HUGO SPRITZ",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "LEMONCELLO SPRITZ",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "449 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        }
+      ],
+      "sideText": null,
+      "insideNote": null
+    },
+    {
+      "id": "cat--araplar",
+      "name": "Şaraplar",
+      "titleEn": "Wines",
+      "children": [],
+      "items": [
+        {
+          "title": "Chateau C. Cabernet Sauvignon (75cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "Kadeh: 200 ₺ / Şişe: 899 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Chateau Crico Chardonnay (75cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "Kadeh: 200 ₺ / Şişe: 899 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Chateau Crico Pinot Noir (75cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "Kadeh: 200 ₺ / Şişe: 899 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Chateau Crico Premium Rose (75cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "Kadeh: 200 ₺ / Şişe: 899 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Chateau Crico Sauvignon Blanc (75cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "Kadeh: 200 ₺ / Şişe: 899 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Chateau Crico Syrah (75cl)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "Kadeh: 200 ₺ / Şişe: 899 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Sangria Beyaz",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "Kadeh: 250 ₺ / Şişe: 1099 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Sangria Kırmızı",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "Kadeh: 250 ₺ / Şişe: 1099 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Sangria Rose",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "Kadeh: 250 ₺ / Şişe: 1099 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        }
+      ],
+      "sideText": null,
+      "insideNote": null
+    },
+    {
+      "id": "cat-soft-drinks",
+      "name": "Soft İçecekler",
+      "titleEn": "Soft Drinks",
+      "children": [],
+      "items": [
+        {
+          "title": "Churchill",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "159 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "COCACOLA",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "149 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "FANTA",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "149 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "SPRITE",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "149 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "REDBULL Classic",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "169 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "REDBULL White",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "169 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "REDBULL SUGARFREE",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "169 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "SCHWEPPES BITTER LEMON",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "159 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "SCHWEPPES INDIAN TONIC",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "159 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "SCHWEPPES ZERO TONIC",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "159 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "FUSE TEA ÇEŞİTLERİ",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "149 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "Soda",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "89 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "Meyveli Soda",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "99 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "Su",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "49 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        }
+      ],
+      "sideText": null,
+      "insideNote": null
+    },
+    {
+      "id": "cat-whiskey-s",
+      "name": "Viski",
+      "titleEn": "Whiskey",
+      "children": [],
+      "items": [
+        {
+          "title": "Jack Daniel's",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "Tek: 350 ₺ / Duble: 550 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Chivas",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "Tek: 350 ₺ / Duble: 550 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Chivas 18",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "Tek: 500 ₺ / Duble: 750 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Gentleman Jack",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "Tek: 375 ₺ / Duble: 575 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "J. Walker Black Label",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "Tek: 350 ₺ / Duble: 550 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Jack Daniel's Fire",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "Tek: 350 ₺ / Duble: 550 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Jack Daniel's Honey",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "Tek: 350 ₺ / Duble: 550 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Jameson",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "Tek: 320 ₺ / Duble: 510 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Jim Beam",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "Tek: 350 ₺ / Duble: 550 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        }
+      ],
+      "sideText": null,
+      "insideNote": null
+    },
+    {
+      "id": "cat-shot-s",
+      "name": "Shotlar",
+      "titleEn": "Shots",
+      "children": [],
+      "items": [
+        {
+          "title": "Jägermeister",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "175 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Jägermeister Manifest",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "225 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "F-16 (Karamelli)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "175 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Picchio Shot",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "175 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Don Julio Blanco",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "250 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Don Julio Reposado",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "250 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Jack Daniel's Fire",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "200 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Jack Daniel's Honey",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "200 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Olmeca Silver Tequila",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "175 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Sambuca",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "175 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        }
+      ],
+      "sideText": null,
+      "insideNote": null
+    },
+    {
+      "id": "cat-yemek----erez",
+      "name": "Yemek & Atıştırmalıklar",
+      "titleEn": "Food & Snacks",
+      "children": [],
+      "items": [
+        {
+          "title": "PICCHIO Bira Tabağı",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "400 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "milk"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Çıtır Tavuk",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "350 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "egg"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "PICCHIO Hamburger",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "425 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "milk",
+              "egg",
+              "sesame"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "PICCHIO Cheese Burger",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "450 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "milk",
+              "egg",
+              "sesame"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "PICCHIO Chicken Burger",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "350 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten",
+              "milk",
+              "egg",
+              "sesame"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Patates Tabağı (ELMA DİLİM)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "275 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "Patates Tabağı (PARMAK)",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "250 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Penne Alfredo",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "400 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "gluten"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "KARIŞIK LUX",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "200 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "shellfish"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "ANTEP FISTIĞI",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "300 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "shellfish"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "BADEM",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "200 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "shellfish"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "TUZLU FISTIK",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "100 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "shellfish"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "KAJU",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "200 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "SOSLU MISIR",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "100 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "Turşu",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "100 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Çikolata",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "200 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "milk"
+            ],
+            "mayContain": []
+          }
+        },
+        {
+          "title": "Jelibon",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "200 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": {
+            "portionNote": null,
+            "caloriesKcal": null,
+            "proteinG": null,
+            "carbsG": null,
+            "fatG": null,
+            "allergens": [
+              "sulfites"
+            ],
+            "mayContain": []
+          }
+        }
+      ],
+      "sideText": null,
+      "insideNote": null
+    },
+    {
+      "id": "cat-happy-hour-s",
+      "name": "Happy Hour",
+      "titleEn": "Happy Hour",
+      "children": [],
+      "items": [
+        {
+          "title": "TÜM HAFTA 1+1 GRINCH ( Kuzu Kulağı )",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "750 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "PAZARTESİ 1+1 TEQUILA SUNRISE",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "750 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "SALI 1+1 FUEGO",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "750 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "ÇARŞAMBA 1+1 WHISKEY SOUR",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "750 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "PERŞEMBE 1+1 THE SECRET",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "750 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        },
+        {
+          "title": "CUMA 1+1 TÜM SPRTIZ ÇEŞİTLERİ",
+          "titleEn": null,
+          "description": null,
+          "descriptionEn": null,
+          "price": "750 ₺",
+          "tastesLike": [],
+          "featured": false,
+          "nutrition": null
+        }
+      ],
+      "sideText": null,
+      "insideNote": null
+    }
+  ]
+}

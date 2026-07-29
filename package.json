@@ -1,0 +1,13 @@
+{
+  "name": "picchio-qr-menu",
+  "version": "1.0.0",
+  "description": "Picchio Cocktail — Summer Edition QR Menu with Firestore Integration",
+  "main": "js/app.js",
+  "scripts": {
+    "seed": "node js/seed-firestore.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "firebase-admin": "^11.8.0"
+  }
+}

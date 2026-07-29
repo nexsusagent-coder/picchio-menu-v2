@@ -1,0 +1,200 @@
+/* ═══════════════════════════════════════════════════════
+   VERA QR MENU — BASE.CSS
+   Design Tokens + Reset + Typography
+═══════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Cinzel:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap');
+
+/* ─── Design Tokens (Light Theme Default) ─────────────────── */
+:root {
+  /* Background */
+  --bg-primary:     #FAF6F0;
+  --bg-secondary:   #F0EAE0;
+  --bg-card:        #FFFFFF;
+  --bg-elevated:    #FFFFFF;
+
+  /* Gold Palette */
+  --gold-primary:   #A67C2E;
+  --gold-bright:    #C8942F;
+  --gold-pale:      #DFC484;
+  --gold-dark:      #7A5A1C;
+  --gold-muted:     #9A7D4C;
+
+  /* Summer Accents */
+  --teal:           #0E8B88;
+  --teal-glow:      rgba(14, 139, 136, 0.15);
+  --coral:          #D4503E;
+  --coral-glow:     rgba(212, 80, 62, 0.15);
+  --lime:           #7A9A20;
+  --amber:          #D98C26;
+  --rose:           #C45677;
+
+  /* Glass & Borders */
+  --glass-bg:       rgba(255, 255, 255, 0.75);
+  --glass-border:   rgba(160, 130, 80, 0.18);
+  --glass-border-h: rgba(160, 130, 80, 0.4);
+  --smoke:          rgba(160, 130, 80, 0.05);
+
+  /* Text */
+  --text-primary:   #1A1814;
+  --text-secondary: #5C5444;
+  --text-muted:     #9B8E7C;
+  --text-gold:      var(--gold-primary);
+
+  /* Fonts */
+  --font-heading:   'Playfair Display', Georgia, serif;
+  --font-display:   var(--font-heading, 'Cormorant Garamond', Georgia, serif);
+  --font-caps:      var(--font-heading, 'Cinzel', Georgia, serif);
+  --font-body:      var(--font-body-alt, 'Outfit', system-ui, sans-serif);
+
+  /* Spacing */
+  --sp-xs:   0.25rem;
+  --sp-sm:   0.5rem;
+  --sp-md:   1rem;
+  --sp-lg:   1.5rem;
+  --sp-xl:   2rem;
+  --sp-2xl:  3rem;
+  --sp-3xl:  4rem;
+
+  /* Radius */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-xl:   32px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --ease-luxury: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-snap:   cubic-bezier(0.87, 0, 0.13, 1);
+  --dur-fast:    200ms;
+  --dur-med:     400ms;
+  --dur-slow:    700ms;
+  --dur-xslow:   1200ms;
+
+  /* Z-index */
+  --z-base:    1;
+  --z-card:    10;
+  --z-nav:     100;
+  --z-modal:   200;
+  --z-overlay: 300;
+  --z-toast:   400;
+}
+
+/* ─── Reset ──────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video {
+  max-width: 100%;
+  display: block;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ─── Scrollbar ───────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dark);
+  border-radius: var(--radius-full);
+}
+
+/* ─── Selection ──────────────────────────────────────── */
+::selection {
+  background: rgba(201, 169, 110, 0.25);
+  color: var(--gold-bright);
+}
+
+/* ─── Typography Utilities ───────────────────────────── */
+.font-display   { font-family: var(--font-display); }
+.font-caps      { font-family: var(--font-caps); }
+.font-body      { font-family: var(--font-body); }
+
+.text-gold      { color: var(--gold-primary); }
+.text-bright    { color: var(--gold-bright); }
+.text-muted     { color: var(--text-muted); }
+.text-secondary { color: var(--text-secondary); }
+
+.tracking-widest { letter-spacing: 0.3em; }
+.tracking-wide   { letter-spacing: 0.15em; }
+.tracking-normal { letter-spacing: 0.05em; }
+
+/* ─── Separator ──────────────────────────────────────── */
+.gold-line {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  color: var(--gold-primary);
+  opacity: 0.5;
+}
+.gold-line::before,
+.gold-line::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+}
+
+/* ─── Gold Diamond Divider ───────────────────────────── */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-sm);
+  margin: var(--sp-md) 0;
+}
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,169,110,0.4));
+}
+.divider::after {
+  background: linear-gradient(90deg, rgba(201,169,110,0.4), transparent);
+}
+.divider-diamond {
+  width: 6px;
+  height: 6px;
+  background: var(--gold-primary);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}

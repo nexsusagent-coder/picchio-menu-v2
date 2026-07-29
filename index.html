@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="tr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Dijital QR menü: kolay görüntüleme, kategori filtreleri ve premium menü deneyimi." />
+    <title>Picchio Cocktail | Dijital Menü</title>
+    <link rel="icon" href="assets/images/logo.png" type="image/png" />
+    <script>
+      (function(){document.documentElement.setAttribute('data-theme','light');try{localStorage.setItem('picchio_theme','light');}catch(e){}})();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=Cinzel:wght@400..800&family=Cormorant+Garamond:ital,wght@0,400..700;1,400..700&family=Inter:wght@300..800&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@300..800&family=Outfit:wght@300..700&family=Playfair+Display:ital,wght@0,400..800;1,400..800&family=Plus+Jakarta+Sans:wght@400..800&family=Syne:wght@400..800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=20" />
+    <link rel="stylesheet" href="css/theme-light.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="menu-app.js?v=1000" defer></script>
+  </head>
+  <body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header class="site-header" data-header>
+      <a class="brand" href="index.html" aria-label="Anasayfa">
+        <img src="assets/images/logo.png" alt="Picchio Cocktail" class="brand-logo" id="headerBrand" />
+      </a>
+      <nav class="desktop-nav" aria-label="Ana menü">
+        <a class="is-active" href="#" id="navMenuDesk">Menü</a>
+        <a href="#contact" id="navContactDesk">İletişim</a>
+      </nav>
+      <div class="header-actions">
+        <a class="header-reserve-btn" href="https://wa.me/+905001234567" target="_blank" rel="noreferrer" id="navReserveDesk">
+          <i data-lucide="message-circle" aria-hidden="true"></i>
+          <span>Rezervasyon</span>
+        </a>
+        <button class="menu-button" data-menu-button aria-label="Menüyü aç">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- MOBİL PANELI -->
+    <div class="mobile-panel" data-mobile-panel>
+      <div class="mobile-nav-content">
+        <nav aria-label="Mobil menü">
+          <a class="is-active" href="#" id="navMenuMob">Menü</a>
+          <a href="#contact" id="navContactMob">İletişim</a>
+        </nav>
+        <a class="reserve-link" href="https://wa.me/+905001234567" target="_blank" rel="noreferrer" id="navReserveMob">
+          <span>Rezervasyon Yap</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ═══ LIGHTBOX ═══ -->
+    <div id="imageLightbox" class="lightbox-overlay" hidden>
+      <button id="lightboxCloseBtn" class="lightbox-close" aria-label="Kapat">
+        <i data-lucide="x"></i>
+      </button>
+      <img id="lightboxImage" src="" alt="" />
+    </div>
+
+    <!-- ═══ ANA İÇERİK ═══ -->
+    <main class="site-main">
+      <section class="menu-flow-shell" data-flow-mode="choice">
+        <div class="hero-brand-block">
+          <div class="hero-logo-wrap">
+            <img src="assets/images/logo.png" alt="Picchio Cocktail" class="hero-logo" />
+            <span class="hero-tagline">Premium Cocktail Bar</span>
+          </div>
+          <div class="hero-divider"></div>
+        </div>
+
+        <div class="hero-titles">
+          <p class="eyebrow" id="heroEyebrow">Dijital Menü</p>
+          <h1 id="heroTitle">Menü</h1>
+        </div>
+        <nav class="flow-breadcrumb" data-flow-breadcrumb aria-label="Menü adımları"></nav>
+        <div class="flow-siblings" data-flow-siblings aria-label="Yakın menü kategorileri"></div>
+        <div class="flow-stage" data-flow-stage>
+          <p class="menu-loading">
+            <span class="loading-spinner"></span>
+            <span id="loadingText">Menü hazırlanıyor...</span>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- ═══ İLETİŞİM ═══ -->
+    <section class="contact-band" id="contact">
+      <div class="contact-container">
+        
+        <div class="contact-header-block">
+          <p class="eyebrow" id="contactSubtitle">İletişim</p>
+          <h2 id="contactTitle">Rezervasyon & Bilgi</h2>
+        </div>
+
+        <!-- BILGI KARTLARI (Adres & Çalışma Saatleri) -->
+        <div class="contact-grid">
+          <!-- Konum / Adres Kartı -->
+          <div class="contact-card" id="contactAddressCard">
+            <div class="contact-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="contact-card-content">
+              <span class="contact-card-label">Adres & Konum</span>
+              <p id="contactAddressText" class="contact-card-value">Bebek Mah. Cevdet Paşa Cad. No: 42, Beşiktaş / İstanbul</p>
+              <a href="https://maps.google.com" id="contactMapsLink" target="_blank" rel="noreferrer" class="contact-card-link">
+                Google Maps'te Aç <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Çalışma Saatleri Kartı -->
+          <div class="contact-card" id="contactHoursCard">
+            <div class="contact-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="contact-card-content">
+              <span class="contact-card-label">Çalışma Saatleri</span>
+              <p id="contactWorkingHoursText" class="contact-card-value">Her gün: 12:00 – 02:00</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- BUTONLAR (WhatsApp, Telefon, Instagram) -->
+        <div class="contact-actions">
+          <a href="https://wa.me/+905001234567" target="_blank" rel="noreferrer" class="whatsapp-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+            <span id="contactWhatsappText">WhatsApp</span>
+          </a>
+          <a href="tel:+905001234567" class="phone-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span id="contactPhoneText">Telefon</span>
+          </a>
+          <a href="https://instagram.com" id="contactInstagram" target="_blank" rel="noreferrer" class="instagram-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            <span>Instagram</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="site-footer">
+      <img src="assets/images/logo.png" alt="Picchio Cocktail" class="footer-brand-logo" id="footerBrand" />
+      <div>
+        <a href="#" id="footerMenu">Menü</a>
+        <span class="footer-sep">·</span>
+        <a href="#contact" id="footerContact">İletişim</a>
+        <span class="footer-sep">·</span>
+        <a href="admin.html" id="footerAdmin">Yönetim</a>
+      </div>
+    </footer>
+  </body>
+</html>

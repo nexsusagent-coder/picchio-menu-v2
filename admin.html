@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="tr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Panel | Picchio Cocktail</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=Cinzel:wght@400..800&family=Cormorant+Garamond:ital,wght@0,400..700;1,400..700&family=Inter:wght@300..800&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@300..800&family=Outfit:wght@300..700&family=Playfair+Display:ital,wght@0,400..800;1,400..800&family=Plus+Jakarta+Sans:wght@400..800&family=Syne:wght@400..800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="admin.css?v=16" />
+    <script>
+      window.onerror = function(msg, url, line, col, error) {
+        alert("JS HATASI: " + msg + "\nSatır: " + line);
+        return false;
+      };
+      window.addEventListener("unhandledrejection", function(e) {
+        alert("ASYNC HATASI: " + e.reason);
+      });
+    </script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  </head>
+  <body>
+
+    <!-- ═══ GİRİŞ EKRANI ═══ -->
+    <div class="login-shell" id="loginShell">
+      <div class="login-card">
+        <p class="eyebrow">Picchio Cocktail</p>
+        <h1>Admin Panel</h1>
+        <p>Menü yönetim paneline giriş yapın.</p>
+        <label>
+          Şifre
+          <input type="password" id="loginPassword" placeholder="Şifrenizi girin" autocomplete="off" />
+        </label>
+        <button type="button" id="loginBtn">Giriş Yap</button>
+        <p class="login-hint">Varsayılan şifre: <strong>admin</strong></p>
+        <div class="error-msg" id="loginError" hidden>Şifre hatalı!</div>
+      </div>
+    </div>
+
+    <!-- ═══ ADMIN PANELİ ═══ -->
+    <div class="admin-shell" id="adminShell" hidden>
+
+      <!-- HEADER -->
+      <header class="admin-header">
+        <div class="admin-header-left">
+          <span class="brand-text">Picchio<em>Cocktail</em></span>
+          <span class="admin-badge">Admin</span>
+        </div>
+        <div class="admin-header-right">
+          <a href="index.html" target="_blank" class="btn btn-outline btn-sm">
+            <i data-lucide="external-link"></i> Menüyü Gör
+          </a>
+          <button class="btn btn-outline btn-sm" id="exportBtn">
+            <i data-lucide="download"></i> JSON İndir
+          </button>
+          <label class="btn btn-outline btn-sm import-label">
+            <i data-lucide="upload"></i> JSON Yükle
+            <input type="file" accept=".json" id="importFile" hidden />
+          </label>
+          <button class="btn btn-outline btn-sm btn-danger" id="logoutBtn">
+            <i data-lucide="log-out"></i> Çıkış
+          </button>
+        </div>
+      </header>
+
+      <!-- İSTATİSTİKLER -->
+      <div class="stats-row" id="statsRow">
+        <div class="stat-card">
+          <i data-lucide="layers"></i>
+          <div>
+            <strong id="statCategories">0</strong>
+            <span>Kategori</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <i data-lucide="utensils"></i>
+          <div>
+            <strong id="statItems">0</strong>
+            <span>Ürün</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <i data-lucide="star"></i>
+          <div>
+            <strong id="statFeatured">0</strong>
+            <span>Öne Çıkan</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ANA İÇERİK -->
+      <div class="admin-content">
+
+        <!-- SOL: KATEGORİ AĞACI -->
+        <aside class="sidebar" id="sidebar">
+          <div class="sidebar-head">
+            <h2>Kategoriler</h2>
+            <button class="btn btn-gold btn-sm" id="addRootCatBtn">
+              <i data-lucide="plus"></i> Ekle
+            </button>
+            <button class="btn btn-outline btn-sm" id="siteSettingsBtn" style="margin-left:auto">
+              <i data-lucide="settings"></i> Ayarlar
+            </button>
+          </div>
+          <div class="cat-tree" id="catTree"></div>
+        </aside>
+
+        <!-- SAĞ: DETAY PANELİ -->
+        <main class="detail-panel" id="detailPanel">
+          <div class="empty-state" id="emptyState">
+            <i data-lucide="mouse-pointer-click"></i>
+            <h3>Kategori Seçin</h3>
+            <p>Sol taraftan bir kategori seçerek ürünlerini görüntüleyin ve düzenleyin.</p>
+          </div>
+
+          <!-- KATEGORİ DÜZENLEME -->
+          <div id="categoryEditor" hidden>
+            <div class="editor-header">
+              <div>
+                <p class="eyebrow" id="editorBreadcrumb">Kategori</p>
+                <h2 id="editorTitle">—</h2>
+              </div>
+              <div class="editor-actions">
+                <button class="btn btn-outline btn-sm" id="addSubCatBtn">
+                  <i data-lucide="folder-plus"></i> Alt Kategori
+                </button>
+                <button class="btn btn-gold btn-sm" id="addItemBtn">
+                  <i data-lucide="plus"></i> Ürün Ekle
+                </button>
+                <button class="btn btn-outline btn-sm btn-danger" id="deleteCatBtn">
+                  <i data-lucide="trash-2"></i> Sil
+                </button>
+              </div>
+            </div>
+
+            <!-- KATEGORİ FORMU -->
+            <details class="editor-section" open>
+              <summary>Kategori Bilgileri</summary>
+              <form class="form-grid" id="categoryForm">
+                <label>
+                  <span>Kategori Adı (TR)</span>
+                  <input type="text" name="name" required placeholder="Örn: Başlangıçlar" />
+                </label>
+                <label>
+                  <span>Kategori Adı (EN)</span>
+                  <input type="text" name="titleEn" placeholder="Örn: Starters" />
+                </label>
+                <label>
+                  <span>Yan Metin (Fiyat vb.)</span>
+                  <input type="text" name="sideText" placeholder="Örn: 1.500 ₺/kişi" />
+                </label>
+                <label>
+                  <span>İç Not</span>
+                  <input type="text" name="insideNote" placeholder="Örn: Minimum 2 kişi" />
+                </label>
+                <div class="form-actions">
+                  <button type="submit" class="btn btn-gold">Kaydet</button>
+                </div>
+              </form>
+            </details>
+
+            <!-- ÜRÜN LİSTESİ -->
+            <div class="editor-section">
+              <div class="section-head">
+                <h3>Ürünler</h3>
+                <span class="item-count" id="itemCount">0 ürün</span>
+              </div>
+              <div class="items-list" id="itemsList"></div>
+            </div>
+          </div>
+
+          <!-- SİTE AYARLARI DÜZENLEME -->
+          <div id="settingsEditor" hidden>
+            <div class="editor-header">
+              <div>
+                <p class="eyebrow">Genel</p>
+                <h2>Site Ayarları</h2>
+              </div>
+            </div>
+            
+            <form id="settingsForm" class="editor-section">
+              <details open>
+                <summary>Yazı Tipi & Font Ayarları (Menü Fontu)</summary>
+                <div class="form-grid">
+                  <label class="full-width">
+                    <span>Hazır Font Paketleri (Presets)</span>
+                    <select id="fontPresetSelect" name="fontPreset">
+                      <option value="playfair_inter">Playfair Display + Inter (Klasik & Lüks Kokteyl Bar - Varsayılan)</option>
+                      <option value="cormorant_outfit">Cormorant Garamond + Outfit (Zarif & Şık Fine-Dining)</option>
+                      <option value="cinzel_montserrat">Cinzel + Montserrat (Prestij & Modern Lüks)</option>
+                      <option value="bodoni_jakarta">Bodoni Moda + Plus Jakarta Sans (Moda & İtalyan Tarzı)</option>
+                      <option value="lora_inter">Lora + Inter (Sıcak & Samimi Bistro)</option>
+                      <option value="syne_inter">Syne + Inter (Modern & Avangart Lounge)</option>
+                      <option value="custom">Özel Font Seçimi (Aşağıdan Kendiniz Seçin)</option>
+                    </select>
+                  </label>
+
+                  <label>
+                    <span>Başlık Fontu (Headings)</span>
+                    <select id="fontHeadingSelect" name="fontHeading">
+                      <option value="'Playfair Display', Georgia, serif">Playfair Display (Serif - Lüks)</option>
+                      <option value="'Cormorant Garamond', Georgia, serif">Cormorant Garamond (Serif - Zarif)</option>
+                      <option value="'Cinzel', Georgia, serif">Cinzel (Caps - Prestij)</option>
+                      <option value="'Bodoni Moda', Georgia, serif">Bodoni Moda (Serif - İtalyan)</option>
+                      <option value="'Lora', Georgia, serif">Lora (Serif - Edebi)</option>
+                      <option value="'Syne', sans-serif">Syne (Sans - Avangart)</option>
+                      <option value="'Montserrat', sans-serif">Montserrat (Sans - Güçlü)</option>
+                      <option value="'Inter', sans-serif">Inter (Sans - Modern)</option>
+                    </select>
+                  </label>
+
+                  <label>
+                    <span>Metin Fontu (Body)</span>
+                    <select id="fontBodySelect" name="fontBody">
+                      <option value="'Inter', system-ui, sans-serif">Inter (Modern & Temiz)</option>
+                      <option value="'Outfit', system-ui, sans-serif">Outfit (Geometrik & Şık)</option>
+                      <option value="'Montserrat', sans-serif">Montserrat (Dengeli)</option>
+                      <option value="'Plus Jakarta Sans', sans-serif">Plus Jakarta Sans (Yumuşak Modern)</option>
+                      <option value="'Lora', serif">Lora (Serif Metin)</option>
+                    </select>
+                  </label>
+                </div>
+                
+                <div class="font-preview-box" style="margin-top: 16px; padding: 18px; border: 1px solid var(--border, rgba(255,255,255,0.1)); border-radius: 12px; background: rgba(0,0,0,0.2);">
+                  <span style="font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold, #c8942f); display: block; margin-bottom: 6px;">Canlı Font Önizlemesi</span>
+                  <h3 id="fontPreviewHeading" style="font-size: 26px; margin: 0 0 6px; font-weight: 700; transition: font-family 200ms ease;">Picchio Signature Kokteyller</h3>
+                  <p id="fontPreviewBody" style="font-size: 14px; opacity: 0.8; margin: 0; transition: font-family 200ms ease;">Özel formüller, premium malzemeler — her gün taze hazırlanır. 449 ₺</p>
+                </div>
+              </details>
+
+              <details>
+                <summary>Renk Paleti</summary>
+                <div class="form-grid">
+                  <label>
+                    <span>Ana Renk (Wine)</span>
+                    <input type="color" name="colorWine" id="colorWine" />
+                  </label>
+                  <label>
+                    <span>Vurgu Rengi (Gold)</span>
+                    <input type="color" name="colorGold" id="colorGold" />
+                  </label>
+                </div>
+              </details>
+
+              <details>
+                <summary>Sistem Metinleri & Başlıklar</summary>
+                <div class="form-grid">
+                  <label>
+                    <span>Marka (1. Kelime)</span>
+                    <input type="text" id="brandWord1" placeholder="Picchio" />
+                  </label>
+                  <label>
+                    <span>Marka (2. Kelime - Eğik)</span>
+                    <input type="text" id="brandWord2" placeholder="Cocktail" />
+                  </label>
+                  
+                  <label>
+                    <span>Menü Linki (Header/Footer)</span>
+                    <input type="text" id="navMenuInput" placeholder="Menü" />
+                  </label>
+                  <label>
+                    <span>İletişim Linki (Header/Footer)</span>
+                    <input type="text" id="navContactInput" placeholder="İletişim" />
+                  </label>
+                  <label>
+                    <span>Rezervasyon Butonu (Header/Mobil)</span>
+                    <input type="text" id="navReserveInput" placeholder="Rezervasyon" />
+                  </label>
+                  <label>
+                    <span>Yükleniyor Metni</span>
+                    <input type="text" id="loadingTextInput" placeholder="Menü hazırlanıyor..." />
+                  </label>
+
+                  <label class="full-width">
+                    <span>Ana Sayfa Üst Etiket (Eyebrow)</span>
+                    <input type="text" id="heroEyebrowInput" placeholder="Dijital Menü" />
+                  </label>
+                  <label class="full-width">
+                    <span>Ana Sayfa Başlık</span>
+                    <input type="text" id="heroTitleInput" placeholder="Menü" />
+                  </label>
+                  <label class="full-width">
+                    <span>Ana Sayfa Alt Başlık</span>
+                    <input type="text" id="heroSubtitleInput" placeholder="Görüntülemek istediğiniz kategoriyi seçin." />
+                  </label>
+                  
+                  <label>
+                    <span>İletişim Üst Etiket (Eyebrow)</span>
+                    <input type="text" id="contactSubtitleInput" placeholder="İletişim" />
+                  </label>
+                  <label>
+                    <span>İletişim Başlık</span>
+                    <input type="text" id="contactTitleInput" placeholder="Rezervasyon & Bilgi" />
+                  </label>
+                  
+                  <label class="full-width">
+                    <span>WhatsApp Buton Metni</span>
+                    <input type="text" id="whatsappBtnInput" placeholder="WhatsApp" />
+                  </label>
+                </div>
+              </details>
+
+              <details open>
+                <summary>İletişim, Konum & Çalışma Saatleri</summary>
+                <div class="form-grid">
+                  <label>
+                    <span>WhatsApp Numarası</span>
+                    <input type="text" name="whatsappNum" id="whatsappNum" placeholder="+905001234567" />
+                  </label>
+                  <label>
+                    <span>Telefon Numarası</span>
+                    <input type="text" name="phoneNum" id="phoneNum" placeholder="+905001234567" />
+                  </label>
+                  <label class="full-width">
+                    <span>Çalışma Saatleri</span>
+                    <input type="text" name="workingHours" id="workingHoursInput" placeholder="Örn: Her gün 12:00 - 02:00" />
+                  </label>
+                  <label class="full-width">
+                    <span>Açık Adres / Konum Bilgisi</span>
+                    <input type="text" name="address" id="addressInput" placeholder="Örn: Bebek Mah. Cevdet Paşa Cad. No: 42, Beşiktaş / İstanbul" />
+                  </label>
+                  <label class="full-width">
+                    <span>Google Maps / Harita Linki</span>
+                    <input type="text" name="mapsUrl" id="mapsUrlInput" placeholder="Örn: https://maps.app.goo.gl/..." />
+                  </label>
+                  <label class="full-width">
+                    <span>Instagram Linki</span>
+                    <input type="text" id="instagramUrl" placeholder="https://instagram.com/picchio" />
+                  </label>
+                </div>
+              </details>
+
+              <div class="form-actions" style="margin-top: 24px;">
+                <button type="submit" class="btn btn-gold">Ayarları Kaydet</button>
+              </div>
+            </form>
+          </div>
+        </main>
+      </div>
+
+      <!-- ═══ ÜRÜN MODAL ═══ -->
+      <div class="modal-overlay" id="itemModal" hidden>
+        <div class="modal-card">
+          <div class="modal-header">
+            <h2 id="modalTitle">Yeni Ürün</h2>
+            <button class="modal-close" id="modalClose">&times;</button>
+          </div>
+          <form class="modal-body" id="itemForm">
+            <div class="form-grid">
+              <label class="full-width">
+                <span>Bulunduğu Kategori</span>
+                <select id="itemCategorySelect" name="targetCategoryPath" style="width: 100%; min-height: 42px; padding: 0 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font: inherit; outline: none; background: white;"></select>
+              </label>
+              <label>
+                <span>Ürün Adı (TR) *</span>
+                <input type="text" name="title" required placeholder="Örn: DANA CARPACCİO" />
+              </label>
+              <label>
+                <span>Ürün Adı (EN)</span>
+                <input type="text" name="titleEn" placeholder="Örn: BEEF CARPACCIO" />
+              </label>
+              <label class="full-width">
+                <span>Açıklama / İçerik (TR)</span>
+                <textarea name="description" rows="2" placeholder="Malzemeler, içindekiler veya açıklama..."></textarea>
+              </label>
+              <label class="full-width">
+                <span>Açıklama / İçerik (EN)</span>
+                <textarea name="descriptionEn" rows="2" placeholder="Ingredients or description..."></textarea>
+              </label>
+              
+              <label class="full-width">
+                <span>Ürün Görseli (Opsiyonel)</span>
+                <input type="file" id="itemImageFile" accept="image/*" />
+              </label>
+              <div class="full-width" style="display:flex; align-items:center; gap:8px; margin-top:4px;">
+                <img id="itemImagePreview" style="max-height:100px; border-radius:8px; display:none; object-fit:cover;" />
+                <button type="button" id="itemImageRemoveBtn" class="btn-secondary" style="display:none; padding:6px 12px; font-size:12px; color:var(--wine); border:1px solid var(--wine); border-radius:4px;">Görseli Kaldır</button>
+              </div>
+
+              <label>
+                <span>Fiyat</span>
+                <input type="text" name="price" placeholder="Örn: 950 ₺" />
+              </label>
+              <label>
+                <span>Tat Notları</span>
+                <input type="text" name="tastesLike" placeholder="Virgülle ayırın: Gin, Lime, Nane" />
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="featured" />
+                <span>Şefin Seçimi (Öne Çıkan)</span>
+              </label>
+            </div>
+
+            <!-- BESİN DEĞERLERİ -->
+            <details class="nutrition-section" open>
+              <summary>Besin Değerleri & Alerjenler</summary>
+              <div class="form-grid">
+                <label>
+                  <span>Porsiyon Notu</span>
+                  <input type="text" name="portionNote" placeholder="Örn: 1 porsiyon" />
+                </label>
+                <label>
+                  <span>Kalori (kcal)</span>
+                  <input type="number" name="caloriesKcal" placeholder="340" />
+                </label>
+                <label>
+                  <span>Protein (g)</span>
+                  <input type="number" name="proteinG" placeholder="24" />
+                </label>
+                <label>
+                  <span>Karbonhidrat (g)</span>
+                  <input type="number" name="carbsG" placeholder="8" />
+                </label>
+                <label>
+                  <span>Yağ (g)</span>
+                  <input type="number" name="fatG" placeholder="24" />
+                </label>
+                <label class="full-width">
+                  <span>Alerjenler</span>
+                  <div class="allergen-grid" id="allergenGrid">
+                    <label class="chip-check"><input type="checkbox" name="allergen" value="milk" /><span>🥛 Süt</span></label>
+                    <label class="chip-check"><input type="checkbox" name="allergen" value="gluten" /><span>🌾 Gluten</span></label>
+                    <label class="chip-check"><input type="checkbox" name="allergen" value="egg" /><span>🥚 Yumurta</span></label>
+                    <label class="chip-check"><input type="checkbox" name="allergen" value="fish" /><span>🐟 Balık</span></label>
+                    <label class="chip-check"><input type="checkbox" name="allergen" value="shellfish" /><span>🦐 Kabuklu</span></label>
+                    <label class="chip-check"><input type="checkbox" name="allergen" value="tree_nuts" /><span>🥜 Kuruyemiş</span></label>
+                    <label class="chip-check"><input type="checkbox" name="allergen" value="peanuts" /><span>🥜 Yer fıstığı</span></label>
+                    <label class="chip-check"><input type="checkbox" name="allergen" value="sesame" /><span>🌱 Susam</span></label>
+                    <label class="chip-check"><input type="checkbox" name="allergen" value="soy" /><span>🫘 Soya</span></label>
+                    <label class="chip-check"><input type="checkbox" name="allergen" value="sulfites" /><span>⚡ Sülfit</span></label>
+                    <label class="chip-check"><input type="checkbox" name="allergen" value="alcohol" /><span>🍷 Alkol</span></label>
+                    <label class="chip-check"><input type="checkbox" name="allergen" value="celery" /><span>🌿 Kereviz</span></label>
+                    <label class="chip-check"><input type="checkbox" name="allergen" value="mustard" /><span>🟡 Hardal</span></label>
+                  </div>
+                </label>
+                <label class="full-width">
+                  <span>Eser Miktarda Bulunabilir</span>
+                  <input type="text" name="mayContain" placeholder="Virgülle: milk, gluten, sesame" />
+                </label>
+              </div>
+            </details>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline" id="modalCancelBtn">İptal</button>
+              <button type="submit" class="btn btn-gold">Kaydet</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- ═══ KATEGORİYE TAŞIMA MODALI ═══ -->
+      <div class="modal-overlay" id="moveItemModal" hidden>
+        <div class="modal-card" style="max-width: 440px;">
+          <div class="modal-header">
+            <h2 id="moveModalTitle">Ürünü Başka Kategoriye Taşı</h2>
+            <button class="modal-close" id="moveModalClose">&times;</button>
+          </div>
+          <div class="modal-body" style="gap: 16px;">
+            <p style="margin: 0; font-size: 14px; font-weight: 600; color: var(--text);" id="moveModalItemName">—</p>
+            <label style="display: grid; gap: 6px; font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--text-mid);">
+              Hedef Kategori Seçin
+              <select id="quickMoveCategorySelect" style="width: 100%; min-height: 44px; padding: 0 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font: inherit; outline: none; background: white; margin-top: 4px;"></select>
+            </label>
+            <div class="modal-footer" style="margin-top: 12px; padding: 0;">
+              <button type="button" class="btn btn-outline" id="moveModalCancelBtn">İptal</button>
+              <button type="button" class="btn btn-gold" id="moveModalConfirmBtn">Kategoriye Taşı</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <script src="admin.js?v=16"></script>
+  </body>
+</html>
