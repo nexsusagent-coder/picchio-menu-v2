@@ -3,3 +3,8 @@ node_modules/
 *.png
 *.webp
 .tempmediaStorage/
+.env
+.env.*
+.wrangler/
+dist/
+out/

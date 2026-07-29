@@ -4,7 +4,10 @@
   "description": "Picchio Cocktail — Summer Edition QR Menu with Firestore Integration",
   "main": "js/app.js",
   "scripts": {
-    "seed": "node js/seed-firestore.js"
+    "build": "node -c script.js menu-app.js admin.js js/app.js js/firebase-config.js js/menu-data.js js/particles.js js/seed-firestore.js js/theme-toggle.js",
+    "seed": "node js/seed-firestore.js",
+    "preview": "npx wrangler pages dev .",
+    "deploy": "npx wrangler pages deploy . --project-name=picchio-qr-menu"
   },
   "dependencies": {
     "cheerio": "^1.2.0",
