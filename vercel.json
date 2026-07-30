@@ -3,9 +3,22 @@
   "buildCommand": null,
   "outputDirectory": ".",
   "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/admin",
+      "destination": "/admin.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/admin/",
+      "destination": "/admin",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
-      "source": "/(index.html|menu-data.json)",
+      "source": "/(index.html|admin.html|menu-data.json)",
       "headers": [
         {
           "key": "Cache-Control",
