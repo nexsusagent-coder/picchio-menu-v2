@@ -1,0 +1,144 @@
+/* ═══════════════════════════════════════════════════════
+   VERA QR MENU — ANIMATIONS.CSS
+═══════════════════════════════════════════════════════ */
+
+/* ─── Fade In ─────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ─── Shimmer / Gold Glint ───────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes goldPulse {
+  0%, 100% { opacity: 0.5; box-shadow: 0 0 10px rgba(201,169,110,0.1); }
+  50%       { opacity: 1;   box-shadow: 0 0 30px rgba(201,169,110,0.4); }
+}
+
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(201,169,110,0.2); }
+  50%       { border-color: rgba(201,169,110,0.7); }
+}
+
+/* ─── Smoke / Mist ───────────────────────────────────── */
+@keyframes smokeRise {
+  0%   { opacity: 0; transform: translateY(0) scale(0.8); filter: blur(4px); }
+  30%  { opacity: 0.4; }
+  100% { opacity: 0; transform: translateY(-80px) scale(2.5); filter: blur(12px); }
+}
+
+@keyframes smokeFloat {
+  0%   { opacity: 0; transform: translateY(0) translateX(0) scale(1); }
+  25%  { opacity: 0.3; }
+  75%  { opacity: 0.15; }
+  100% { opacity: 0; transform: translateY(-60px) translateX(20px) scale(1.8); }
+}
+
+/* ─── Particle Float ─────────────────────────────────── */
+@keyframes particleFloat {
+  0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
+  33%       { transform: translateY(-15px) translateX(8px) scale(1.1); opacity: 0.9; }
+  66%       { transform: translateY(-5px) translateX(-5px) scale(0.9); opacity: 0.5; }
+}
+
+@keyframes orb {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(30px, -40px) scale(1.05); }
+  50%  { transform: translate(-20px, -60px) scale(0.95); }
+  75%  { transform: translate(-40px, -20px) scale(1.02); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* ─── Reveal / Clip Path ─────────────────────────────── */
+@keyframes revealUp {
+  from { clip-path: inset(100% 0 0 0); }
+  to   { clip-path: inset(0% 0 0 0); }
+}
+
+@keyframes revealDown {
+  from { clip-path: inset(0 0 100% 0); }
+  to   { clip-path: inset(0 0 0% 0); }
+}
+
+/* ─── Logo Write-On ──────────────────────────────────── */
+@keyframes typewriter {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 50%  { border-right-color: var(--gold-primary); }
+  51%, 100% { border-right-color: transparent; }
+}
+
+/* ─── Spin / Rotate ──────────────────────────────────── */
+@keyframes slowSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes counterSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+/* ─── Card Hover Lift ─────────────────────────────────── */
+@keyframes cardBreath {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
+}
+
+/* ─── Number Count ───────────────────────────────────── */
+@keyframes numSlideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Stagger Utilities ──────────────────────────────── */
+.anim-delay-1  { animation-delay: 0.1s; }
+.anim-delay-2  { animation-delay: 0.2s; }
+.anim-delay-3  { animation-delay: 0.3s; }
+.anim-delay-4  { animation-delay: 0.4s; }
+.anim-delay-5  { animation-delay: 0.5s; }
+.anim-delay-6  { animation-delay: 0.6s; }
+.anim-delay-7  { animation-delay: 0.7s; }
+.anim-delay-8  { animation-delay: 0.8s; }
+
+/* ─── Animation Classes ──────────────────────────────── */
+.fade-in-up {
+  animation: fadeInUp var(--dur-slow) var(--ease-luxury) both;
+}
+.fade-in {
+  animation: fadeIn var(--dur-med) var(--ease-luxury) both;
+}
+.fade-in-scale {
+  animation: fadeInScale var(--dur-slow) var(--ease-luxury) both;
+}
+
+/* ─── Reduced Motion ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

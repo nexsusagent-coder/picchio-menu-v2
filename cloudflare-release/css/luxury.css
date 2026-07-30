@@ -1,0 +1,278 @@
+/* ═══════════════════════════════════════════════════════
+   VERA QR MENU — LUXURY.CSS
+   Glassmorphism, Gold Effects, Smoke, Particles
+═══════════════════════════════════════════════════════ */
+
+/* ─── Glassmorphism Panel ────────────────────────────── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-strong {
+  background: rgba(14, 14, 26, 0.85);
+  backdrop-filter: blur(40px) saturate(2);
+  -webkit-backdrop-filter: blur(40px) saturate(2);
+  border: 1px solid rgba(201,169,110,0.15);
+}
+
+/* ─── Gold Text Shimmer ──────────────────────────────── */
+.gold-shimmer {
+  background: linear-gradient(
+    105deg,
+    var(--gold-dark) 0%,
+    var(--gold-primary) 30%,
+    var(--gold-pale) 50%,
+    var(--gold-primary) 70%,
+    var(--gold-dark) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+.gold-text {
+  background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-bright) 50%, var(--gold-primary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Gold Border Glow ───────────────────────────────── */
+.gold-border {
+  border: 1px solid var(--glass-border);
+  transition: border-color var(--dur-med) var(--ease-luxury),
+              box-shadow var(--dur-med) var(--ease-luxury);
+}
+.gold-border:hover {
+  border-color: rgba(201, 169, 110, 0.5);
+  box-shadow: 0 0 20px rgba(201, 169, 110, 0.1),
+              inset 0 0 20px rgba(201, 169, 110, 0.03);
+}
+
+/* ─── Gold Button ────────────────────────────────────── */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-sm);
+  padding: 0.85rem 2rem;
+  background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold-primary) 50%, var(--gold-dark) 100%);
+  background-size: 200% auto;
+  color: var(--bg-primary);
+  font-family: var(--font-caps);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-position var(--dur-med) var(--ease-luxury),
+              transform var(--dur-fast),
+              box-shadow var(--dur-med);
+  position: relative;
+  overflow: hidden;
+}
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.6s var(--ease-luxury);
+}
+.btn-gold:hover {
+  background-position: right center;
+  box-shadow: 0 8px 32px rgba(201,169,110,0.3);
+  transform: translateY(-1px);
+}
+.btn-gold:hover::before {
+  transform: translateX(100%);
+}
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+/* ─── Ghost Button ───────────────────────────────────── */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  padding: 0.75rem 1.75rem;
+  background: transparent;
+  color: var(--gold-primary);
+  font-family: var(--font-caps);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--dur-med) var(--ease-luxury);
+}
+.btn-ghost:hover {
+  border-color: var(--gold-primary);
+  background: rgba(201,169,110,0.08);
+  color: var(--gold-bright);
+}
+
+/* ─── Smoke Element ──────────────────────────────────── */
+.smoke-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.smoke-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  animation: orb 20s ease-in-out infinite;
+}
+
+.smoke-orb-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(201,169,110,0.08) 0%, transparent 70%);
+  top: -100px;
+  right: -100px;
+  animation-duration: 25s;
+}
+
+.smoke-orb-2 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(26,173,170,0.06) 0%, transparent 70%);
+  bottom: 100px;
+  left: -80px;
+  animation-duration: 30s;
+  animation-delay: -10s;
+}
+
+.smoke-orb-3 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(255,123,107,0.05) 0%, transparent 70%);
+  top: 40%;
+  left: 50%;
+  animation-duration: 20s;
+  animation-delay: -5s;
+}
+
+/* ─── Smoke Wisps ────────────────────────────────────── */
+.wisp {
+  position: absolute;
+  width: 2px;
+  border-radius: 50%;
+  background: linear-gradient(to top, rgba(201,169,110,0.3), transparent);
+  filter: blur(3px);
+  animation: smokeRise 4s ease-in-out infinite;
+}
+
+/* ─── Particle Canvas ────────────────────────────────── */
+#particle-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* ─── Product Image Glow ─────────────────────────────── */
+.img-glow {
+  position: relative;
+}
+.img-glow::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(201,169,110,0.3), transparent 50%, rgba(26,173,170,0.2));
+  opacity: 0;
+  transition: opacity var(--dur-med) var(--ease-luxury);
+  pointer-events: none;
+}
+.img-glow:hover::after {
+  opacity: 1;
+}
+
+/* ─── Number Badge ───────────────────────────────────── */
+.num-badge {
+  font-family: var(--font-caps);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--gold-primary);
+  opacity: 0.7;
+}
+
+/* ─── Dot Leader ─────────────────────────────────────── */
+.dot-leader {
+  flex: 1;
+  border-bottom: 1px dotted rgba(201,169,110,0.2);
+  margin: 0 var(--sp-sm);
+  margin-bottom: 4px;
+}
+
+/* ─── Tag / Badge ────────────────────────────────────── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tag-gold {
+  background: rgba(201,169,110,0.12);
+  border: 1px solid rgba(201,169,110,0.3);
+  color: var(--gold-bright);
+}
+
+.tag-summer {
+  background: rgba(26,173,170,0.12);
+  border: 1px solid rgba(26,173,170,0.3);
+  color: var(--teal);
+}
+
+.tag-new {
+  background: rgba(255,123,107,0.12);
+  border: 1px solid rgba(255,123,107,0.3);
+  color: var(--coral);
+}
+
+/* ─── Arch Decoration ────────────────────────────────── */
+.arch-deco {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 100px;
+  border: 1px solid rgba(201,169,110,0.15);
+  border-bottom: none;
+  border-radius: 100px 100px 0 0;
+  pointer-events: none;
+}
+
+/* ─── Noise Texture ──────────────────────────────────── */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}

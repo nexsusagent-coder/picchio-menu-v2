@@ -354,7 +354,7 @@ function ensureSettings() {
     menuData.settings = {};
   }
   if (!menuData.settings.colors) menuData.settings.colors = { wine: "#6b2430", gold: "#c8942f" };
-  if (!menuData.settings.contact) menuData.settings.contact = { whatsapp: "+905001234567", phone: "+905001234567", address: "", mapsUrl: "", workingHours: "" };
+  if (!menuData.settings.contact) menuData.settings.contact = { whatsapp: "+905558928833", phone: "+905558928833", address: "Uncubozköy, 5518. Sk. No:35/A, 45125 Yunusemre/Manisa", mapsUrl: "https://maps.app.goo.gl/v5GvuNbJLZMRkTnV6", workingHours: "Her gün: 12:00 – 02:00" };
   if (!menuData.settings.announcements) {
     menuData.settings.announcements = {
       summerBanner: { active: true, title: "Picchio Signature Kokteyller", text: "Özel formüller, premium malzemeler — her gün taze hazırlanır." },
@@ -376,7 +376,7 @@ function ensureSettings() {
       whatsappBtn: "WhatsApp"
     };
   }
-  if (!menuData.settings.social) menuData.settings.social = { instagram: "" };
+  if (!menuData.settings.social) menuData.settings.social = { instagram: "https://www.instagram.com/picchiococktail?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" };
 }
 
 function initIcons() {

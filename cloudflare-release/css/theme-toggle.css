@@ -1,0 +1,8 @@
+/* ═══════════════════════════════════════════════════════
+   PICCHIO QR MENU — THEME TOGGLE (DISABLED)
+   Dark mode removed; permanent light theme active.
+═══════════════════════════════════════════════════════ */
+
+.theme-toggle {
+  display: none !important;
+}
