@@ -76,31 +76,37 @@
 ---
 
 ## 13. DNS Kaydı Durumu
-- **Bekleniyor.** Cloudflare üzerinde A kaydı oluşturulması gerekiyor.
+- **Tamamlandı.** `api.picchiococktail.com` -> `31.97.183.147` A kaydı aktiftir.
 
 ---
 
 ## 14. HTTPS Sertifikası Durumu
-- DNS A kaydı `31.97.183.147` adresine yönlendiğinde Caddy Otomatik SSL (Let's Encrypt) sertifikasını oluşturacaktır.
+- **Tamamlandı & Doğrulandı.** Caddy tarafından Let's Encrypt SSL sertifikası otomatik üretilmiştir. HSTS ve TLS 1.3 güvenlik başlıkları aktiftir.
 
 ---
 
-## 15. Canlı API URL'si
-- `https://api.picchiococktail.com`
+## 15. Canlı API URL'leri & Test Sonuçları
+- **`https://api.picchiococktail.com/api/health`:** **HTTP 200 OK** (`{"status":"ok","database":"connected"}`)
+- **`https://api.picchiococktail.com/api/menu`:** **HTTP 200 OK** (`source: database`, `version: 1`)
 
 ---
 
 ## 16. Git Repository Durumu
-- **Commit Hash:** `56948ac` (`fix: use 127.0.0.1 in API healthcheck`)
+- **Commit Hash:** `7f1879c`
 - **GitHub Push:** **Başarılı** (`main -> main`)
 
 ---
 
 ## 17. Frontend Durumu
-- **Durum:** **Henüz bağlanmadı.** (Önce API ve DNS doğrulaması tamamlanacaktır).
+- **Durum:** **Henüz bağlanmadı.** (Kullanıcının talimatı doğrultusunda canlı müşteri sitesini etkilememek için el sürülmedi).
 
 ---
 
-## 18. Sonraki Frontend Adımları
-1. Cloudflare DNS A kaydı aktif edildikten sonra canlı canlı API testi yapılması.
-2. `admin.js` ve `menu-app.js` içerisindeki localStorage yapısının `/api/menu` ve `/api/admin/menu` API endpoint'lerine bağlanması.
+## 18. Tamamlanma Durumu
+- Picchio izole PostgreSQL çalışıyor
+- Picchio API çalışıyor
+- Picchio Caddy reverse proxy SSL ile çalışıyor
+- Internal ve Canlı HTTPS testleri %100 başarılı
+- Mevcut `sentient-*` servisleri etkilenmedi
+- Frontend henüz değiştirilmedi (Kullanıcı onayı bekleniyor)
+
