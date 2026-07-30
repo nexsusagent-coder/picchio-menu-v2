@@ -1,0 +1,11 @@
+# Vercel Deployment Ignore Rules
+# Keep admin panel in private GitHub repo, but exclude from Vercel public deployment
+admin.html
+admin.js
+admin.css
+
+# Exclude local build artifacts and docs
+cloudflare-release/
+cloudflare-release.zip
+RELEASE_REPORT.md
+.env*

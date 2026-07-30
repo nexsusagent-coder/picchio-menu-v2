@@ -1,10 +1,26 @@
-node_modules/
-.playwright-mcp/
-*.png
-*.webp
-.tempmediaStorage/
+# Environment & Secrets
 .env
 .env.*
+!.env.example
+
+# Dependencies & Build Directories
+node_modules/
+.vercel/
 .wrangler/
 dist/
 out/
+cloudflare-release/
+cloudflare-release.zip
+
+# Temporary root screenshots
+current-state*.png
+picchio-menu-screenshot.png
+
+# Logs & Temporary Files
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.tempmediaStorage/
+.playwright-mcp/
