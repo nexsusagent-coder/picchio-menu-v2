@@ -284,8 +284,7 @@ function showAdmin() {
 
   loadData();
   if (window.lucide) window.lucide.createIcons();
-}
-  $("#adminShell").hidden = false;
+
   document.getElementById("summerImageFile")?.addEventListener("change", async (e) => {
     const file = e.target.files[0];
     if (file) {
