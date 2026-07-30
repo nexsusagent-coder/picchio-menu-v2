@@ -1350,12 +1350,125 @@ h3 { font-size: 26px; line-height: 1.05; }
 /* Card animations handled by scroll-reveal */
 
 /* ═══════════════════════════════════════════
-   RESPONSIVE — Tablet (≤980px)
+   RESPONSIVE — Mobil & Tablet (≤980px)
    ═══════════════════════════════════════════ */
 @media (max-width: 980px) {
-  .site-header { grid-template-columns: auto 1fr auto; }
-  .desktop-nav, .reserve-link { display: none; }
-  .menu-button { display: grid; justify-self: end; }
+  .site-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    top: max(10px, env(safe-area-inset-top)) !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: calc(100% - 24px) !important;
+    max-width: 1200px !important;
+    height: 64px !important;
+    min-height: 64px !important;
+    padding: 0 12px !important;
+    border-radius: 14px !important;
+    box-sizing: border-box !important;
+    grid-template-columns: none !important;
+  }
+
+  .site-header.is-scrolled {
+    top: max(6px, env(safe-area-inset-top)) !important;
+  }
+
+  .brand {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100% !important;
+    text-decoration: none !important;
+  }
+
+  .brand-logo {
+    height: 28px !important;
+    width: auto !important;
+    max-width: 105px !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: auto 0 !important;
+  }
+
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .header-actions {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    flex-shrink: 0 !important;
+    margin: 0 0 0 auto !important;
+    padding: 0 !important;
+    height: 100% !important;
+  }
+
+  .header-reserve-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 42px !important;
+    padding: 0 14px !important;
+    font-size: 11.5px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.08em !important;
+    white-space: nowrap !important;
+    border-radius: 10px !important;
+    margin: auto 0 !important;
+    gap: 5px !important;
+    box-sizing: border-box !important;
+    line-height: 1 !important;
+    position: relative !important;
+    top: 0 !important;
+    transform: none !important;
+  }
+
+  .header-reserve-btn svg,
+  .header-reserve-btn i {
+    width: 14px !important;
+    height: 14px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .menu-button {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    border-radius: 10px !important;
+    margin: auto 0 !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    top: 0 !important;
+    transform: none !important;
+    border: 1px solid var(--line) !important;
+    background: transparent !important;
+    color: var(--ivory) !important;
+  }
+
+  .menu-button svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .menu-flow-shell {
+    padding-top: 92px !important;
+  }
 }
 
 /* ═══════════════════════════════════════════
@@ -1364,19 +1477,12 @@ h3 { font-size: 26px; line-height: 1.05; }
 @media (max-width: 640px) {
   :root { --pad: 16px; }
 
-  .site-header {
-    top: 8px;
-    width: calc(100% - 16px);
-    height: 54px;
-    padding: 0 10px 0 14px;
-    border-radius: 14px;
-  }
-
   .brand-text { font-size: 19px; }
 
   .menu-flow-shell {
     min-height: auto;
-    padding: 82px 14px 32px;
+    padding-top: 88px !important;
+    padding-bottom: 32px;
   }
 
   .menu-flow-shell .hero-titles { margin-bottom: 16px; }
@@ -1472,12 +1578,53 @@ h3 { font-size: 26px; line-height: 1.05; }
 }
 
 /* ═══════════════════════════════════════════
-   RESPONSIVE — Küçük Mobil (≤420px)
+   RESPONSIVE — Küçük Mobil (≤420px & ≤360px)
    ═══════════════════════════════════════════ */
 @media (max-width: 420px) {
   .menu-flow-shell { padding-left: 10px; padding-right: 10px; }
   .lux-menu-card { padding: 12px; }
   .lux-menu-card h2 { font-size: 20px; }
+}
+
+@media (max-width: 360px) {
+  .site-header {
+    padding: 0 8px !important;
+    gap: 6px !important;
+    height: 58px !important;
+    width: calc(100% - 16px) !important;
+  }
+
+  .brand-logo {
+    max-width: 85px !important;
+    height: 24px !important;
+  }
+
+  .header-actions {
+    gap: 5px !important;
+  }
+
+  .header-reserve-btn {
+    height: 38px !important;
+    padding: 0 9px !important;
+    font-size: 10.5px !important;
+    gap: 4px !important;
+  }
+
+  .header-reserve-btn svg,
+  .header-reserve-btn i {
+    width: 13px !important;
+    height: 13px !important;
+  }
+
+  .menu-button {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+  }
+
+  .menu-flow-shell {
+    padding-top: 80px !important;
+  }
 }
 
 /* ─── LIGHTBOX ─── */
