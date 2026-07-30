@@ -9,7 +9,7 @@ const config = {
   allowedOrigins: (process.env.ALLOWED_ORIGINS || '*')
     .split(',')
     .map(o => o.trim())
-    .concat(['https://qr-menu-j27jmo8ta-nexsusagent-3348s-projects.vercel.app'])
+    .concat(['https://qr-menu-git-feat-vps-menu-sync-nexsusagent-3348s-projects.vercel.app'])
     .filter(Boolean),
   initialMenuPath: path.join(__dirname, '../data/menu-data.json')
 };
