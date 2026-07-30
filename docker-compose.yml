@@ -1,0 +1,94 @@
+name: picchio-stack
+
+services:
+  picchio-postgres:
+    image: postgres:16-alpine
+    container_name: picchio-postgres
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-picchio_db}
+      POSTGRES_USER: ${POSTGRES_USER:-picchio_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - picchio_postgres_data:/var/lib/postgresql/data
+    networks:
+      - picchio_internal
+    expose:
+      - "5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-picchio_user} -d ${POSTGRES_DB:-picchio_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: "1.00"
+          memory: 1G
+
+  picchio-api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: picchio-api
+    restart: unless-stopped
+    depends_on:
+      picchio-postgres:
+        condition: service_healthy
+    env_file:
+      - .env
+    networks:
+      - picchio_edge
+      - picchio_internal
+    expose:
+      - "3000"
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:3000/api/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 512M
+
+  picchio-caddy:
+    image: caddy:2-alpine
+    container_name: picchio-caddy
+    restart: unless-stopped
+    depends_on:
+      - picchio-api
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - picchio_caddy_data:/data
+      - picchio_caddy_config:/config
+    networks:
+      - picchio_edge
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 256M
+
+volumes:
+  picchio_postgres_data:
+    name: picchio_postgres_data
+  picchio_caddy_data:
+    name: picchio_caddy_data
+  picchio_caddy_config:
+    name: picchio_caddy_config
+
+networks:
+  picchio_edge:
+    name: picchio_edge
+    driver: bridge
+  picchio_internal:
+    name: picchio_internal
+    driver: bridge
+    internal: true
