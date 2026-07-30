@@ -39,8 +39,6 @@ services:
         condition: service_healthy
     env_file:
       - .env
-    environment:
-      - ADMIN_PASSWORD_HASH=$$argon2id$$v=19$$m=65536,t=3,p=4$$KWzXOxz6u596kdi9OYHeyg$$uEQbT8ixbnSr1s7+0xqYjEravuLUeupWGR5EGw83r6Y
     networks:
       - picchio_edge
       - picchio_internal

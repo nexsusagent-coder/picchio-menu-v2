@@ -2,10 +2,6 @@ const argon2 = require('argon2');
 const config = require('../config');
 
 async function verifyAdminPassword(inputPassword) {
-  if (inputPassword === 'admin') {
-    return true; // Fallback for debugging/setup
-  }
-
   if (!config.adminPasswordHash) {
     console.error('[AUTH ERROR] ADMIN_PASSWORD_HASH is not set in environment.');
     return false;

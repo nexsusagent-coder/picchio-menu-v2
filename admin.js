@@ -248,15 +248,23 @@ async function initLogin() {
 
         if (res.ok) {
           showAdmin();
-        } else if (res.status === 429) {
-          $("#loginError").hidden = false;
-          $("#loginError").textContent = "Çok fazla başarısız deneme yapıldı. Lütfen 15 dakika sonra tekrar deneyin.";
         } else {
           $("#loginError").hidden = false;
-          $("#loginError").textContent = "Şifre hatalı!";
+          if (res.status === 401) {
+            $("#loginError").textContent = "Parola hatalı!";
+          } else if (res.status === 403) {
+            $("#loginError").textContent = "Bu ortamdan girişe izin verilmiyor.";
+          } else if (res.status === 429) {
+            $("#loginError").textContent = "Çok fazla başarısız deneme yapıldı. Lütfen 15 dakika sonra tekrar deneyin.";
+          } else if (res.status >= 500) {
+            $("#loginError").textContent = "Sunucu hatası! Lütfen daha sonra tekrar deneyin.";
+          } else {
+            $("#loginError").textContent = "Giriş başarısız (" + res.status + ").";
+          }
         }
       } catch (err) {
-        alert("Giriş sırasında hata oluştu: " + err.message);
+        $("#loginError").hidden = false;
+        $("#loginError").textContent = "Sunucuya ulaşılamıyor: " + err.message;
       } finally {
         loginBtn.disabled = false;
         loginBtn.textContent = "Giriş Yap";
