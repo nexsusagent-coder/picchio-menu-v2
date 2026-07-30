@@ -9,8 +9,13 @@ const config = {
   allowedOrigins: (process.env.ALLOWED_ORIGINS || '*')
     .split(',')
     .map(o => o.trim())
+    .concat(['https://qr-menu-j27jmo8ta-nexsusagent-3348s-projects.vercel.app'])
     .filter(Boolean),
   initialMenuPath: path.join(__dirname, '../data/menu-data.json')
 };
+
+if (config.adminPasswordHash) {
+  config.adminPasswordHash = config.adminPasswordHash.trim();
+}
 
 module.exports = config;
