@@ -576,60 +576,83 @@ window.applyGlobalSettings = function(settings) {
 };
 
 function loadAndRenderMenu() {
-  fetch("menu-data.json")
-    .then((r) => r.json())
-    .then((fallback) => {
-      state.payload = fallback;
-      const stored = localStorage.getItem("picchio_menu_data");
-      if (stored) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 6000);
+
+  fetch("/api/menu", { cache: "no-store", signal: controller.signal })
+    .then((r) => {
+      clearTimeout(timeoutId);
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    })
+    .then((res) => {
+      if (res && res.data && res.data.categories && Array.isArray(res.data.categories) && res.data.categories.length > 0) {
+        state.payload = res.data;
         try {
-          const parsed = JSON.parse(stored);
-          if (parsed.categories && Array.isArray(parsed.categories) && parsed.categories.length > 0) {
-            state.payload.categories = parsed.categories;
-          }
-          if (parsed.settings) {
-            state.payload.settings = {
-              ...(fallback.settings || {}),
-              ...(parsed.settings || {}),
-              contact: { ...(fallback.settings?.contact || {}), ...(parsed.settings?.contact || {}) },
-              social: { ...(fallback.settings?.social || {}), ...(parsed.settings?.social || {}) },
-              texts: { ...(fallback.settings?.texts || {}), ...(parsed.settings?.texts || {}) }
-            };
-          }
-        } catch (e) {
-          console.warn("LocalStorage parse error, using fallback data:", e);
+          localStorage.setItem("picchio_menu_cache", JSON.stringify({
+            data: res.data,
+            version: res.version,
+            updatedAt: res.updatedAt
+          }));
+        } catch(e) {}
+
+        state.path = currentHistoryPath();
+        render();
+        if (state.payload && state.payload.settings) {
+          window.applyGlobalSettings(state.payload.settings);
         }
+        writeHistory("replace");
+        return;
       }
-      state.path = currentHistoryPath();
-      render();
-      if (state.payload && state.payload.settings) {
-        window.applyGlobalSettings(state.payload.settings);
-      }
-      writeHistory("replace");
+      throw new Error("Invalid API payload");
     })
     .catch((err) => {
-      console.warn("menu-data.json fetch failed, checking localStorage fallback:", err);
-      const stored = localStorage.getItem("picchio_menu_data");
-      if (stored) {
-        try {
-          state.payload = JSON.parse(stored);
+      clearTimeout(timeoutId);
+      console.warn("Central API fetch failed or timed out, trying offline cache fallback:", err.message);
+
+      // Try LocalStorage Cache
+      let cached = null;
+      try {
+        const storedCache = localStorage.getItem("picchio_menu_cache") || localStorage.getItem("picchio_menu_data");
+        if (storedCache) {
+          const parsed = JSON.parse(storedCache);
+          cached = parsed.data ? parsed.data : parsed;
+        }
+      } catch(e) {}
+
+      if (cached && cached.categories && Array.isArray(cached.categories) && cached.categories.length > 0) {
+        state.payload = cached;
+        state.path = currentHistoryPath();
+        render();
+        if (state.payload && state.payload.settings) {
+          window.applyGlobalSettings(state.payload.settings);
+        }
+        writeHistory("replace");
+        return;
+      }
+
+      // Static menu-data.json fallback
+      fetch("menu-data.json")
+        .then((r) => r.json())
+        .then((fallback) => {
+          state.payload = fallback;
           state.path = currentHistoryPath();
           render();
           if (state.payload && state.payload.settings) {
             window.applyGlobalSettings(state.payload.settings);
           }
           writeHistory("replace");
-          return;
-        } catch(e) {}
-      }
-      if (stage) stage.innerHTML = `<p class="menu-loading">Menü yüklenirken hata oluştu. Lütfen sayfayı yenileyin.</p>`;
+        })
+        .catch(() => {
+          if (stage) stage.innerHTML = `<p class="menu-loading">Menü yüklenirken hata oluştu. Lütfen sayfayı yenileyin.</p>`;
+        });
     });
 }
 
 loadAndRenderMenu();
 
 window.addEventListener("storage", (e) => {
-  if (e.key === "picchio_menu_data") {
+  if (e.key === "picchio_menu_cache" || e.key === "picchio_menu_data") {
     loadAndRenderMenu();
   }
 });

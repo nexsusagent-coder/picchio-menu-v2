@@ -56,40 +56,108 @@ async function compressImage(file) {
 }
 
 async function loadData() {
-  let fallback;
   try {
-    const res = await fetch("menu-data.json");
-    if (!res.ok) throw new Error("HTTP " + res.status);
-    fallback = await res.json();
+    const res = await fetch("/api/admin/menu", {
+      credentials: "include",
+      headers: { "Accept": "application/json" }
+    });
+
+    if (res.status === 401) {
+      showLogin();
+      return;
+    }
+
+    if (res.ok) {
+      const json = await res.json();
+      if (json && json.data && json.data.categories) {
+        menuData = json.data;
+        updatePublishStatus(json.version, json.updatedAt);
+        renderTree();
+        updateStats();
+        return;
+      }
+    }
   } catch (err) {
-    console.error(err);
-    alert("HATA: menu-data.json dosyası okunamadı! (Siteyi http://localhost:8080 üzerinden açtığınıza emin olun, direkt dosyaya tıklamayın.)");
-    fallback = { version: Date.now(), categories: [], settings: {} };
+    console.warn("Central API load failed, falling back to static/draft data:", err.message);
   }
 
-  const stored = localStorage.getItem(STORAGE_KEY);
-  if (stored) {
-    try {
-      const parsed = JSON.parse(stored);
-      // Sunucu verisi daha yeniyse (yeni import yapılmışsa) yerel depolamayı güncelle
-      if (parsed.version && fallback.version && Number(parsed.version) < Number(fallback.version)) {
-        menuData = fallback;
-        saveData();
-      } else {
-        menuData = parsed;
-      }
-      return;
-    } catch (e) { /* düş, varsayılana geç */ }
+  // Fallback to static menu-data.json
+  try {
+    const res = await fetch("menu-data.json");
+    menuData = await res.json();
+  } catch (err) {
+    menuData = { version: Date.now(), categories: [], settings: {} };
   }
-  menuData = fallback;
-  saveData();
+
+  renderTree();
+  updateStats();
 }
 
 function saveData() {
   if (menuData) {
-    menuData.version = Date.now();
+    try {
+      localStorage.setItem("picchio_admin_draft", JSON.stringify(menuData));
+    } catch(e) {}
   }
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(menuData));
+}
+
+function updatePublishStatus(version, updatedAt) {
+  const statusEl = document.getElementById("publishStatus");
+  if (statusEl) {
+    const dateStr = updatedAt ? new Date(updatedAt).toLocaleTimeString("tr-TR", { hour: '2-digit', minute: '2-digit' }) : '';
+    statusEl.textContent = `v${version || 1} • ${dateStr}`;
+  }
+}
+
+async function publishCentralMenu() {
+  if (!menuData || !menuData.categories || menuData.categories.length === 0) {
+    alert("Hata: Menü verisi boş olamaz!");
+    return;
+  }
+
+  const publishBtn = document.getElementById("publishBtn");
+  if (publishBtn) {
+    publishBtn.disabled = true;
+    publishBtn.innerHTML = `<i data-lucide="loader"></i> Kaydediliyor...`;
+    if (window.lucide) window.lucide.createIcons();
+  }
+
+  try {
+    const res = await fetch("/api/admin/menu", {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(menuData)
+    });
+
+    if (res.status === 401) {
+      alert("Oturum süreniz doldu. Lütfen tekrar giriş yapın.");
+      showLogin();
+      return;
+    }
+
+    if (!res.ok) {
+      const errJson = await res.json().catch(() => ({}));
+      throw new Error(errJson.message || ("HTTP " + res.status));
+    }
+
+    const updated = await res.json();
+    if (updated && updated.data) {
+      menuData = updated.data;
+      updatePublishStatus(updated.version, updated.updatedAt);
+      toast("Değişiklikler kaydedildi ve tüm cihazlarda yayınlandı. ✓");
+    }
+  } catch (err) {
+    alert("Sunucuya ulaşılamadı. Değişiklikler yayınlanmadı: " + err.message);
+  } finally {
+    if (publishBtn) {
+      publishBtn.disabled = false;
+      publishBtn.innerHTML = `<i data-lucide="cloud-upload"></i> Değişiklikleri Yayınla`;
+      if (window.lucide) window.lucide.createIcons();
+    }
+  }
 }
 
 /* ─── Ağaçta düğüm bulma ─── */
@@ -137,59 +205,86 @@ function updateStats() {
 }
 
 /* ═══ GİRİŞ SİSTEMİ ═══ */
-function checkAuth() {
-  return sessionStorage.getItem("picchio_auth") === "1";
-}
-
-function initLogin() {
+async function initLogin() {
   try {
-    if (checkAuth()) {
-      showAdmin();
-      return;
+    const res = await fetch("/api/auth/me", { credentials: "include" });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.authenticated) {
+        showAdmin();
+        return;
+      }
     }
   } catch(e) {
-    console.error("Auth check failed:", e);
+    console.warn("Auth check failed:", e);
   }
+
+  showLogin();
 
   const loginBtn = $("#loginBtn");
-  if (!loginBtn) {
-    alert("Kritik Hata: Giriş butonu bulunamadı!");
-    return;
+  if (loginBtn) {
+    loginBtn.onclick = async () => {
+      const passInput = $("#loginPassword");
+      const pass = passInput ? passInput.value.trim() : "";
+
+      if (!pass) {
+        $("#loginError").hidden = false;
+        $("#loginError").textContent = "Lütfen şifrenizi girin.";
+        return;
+      }
+
+      loginBtn.disabled = true;
+      loginBtn.textContent = "Giriş Yapılıyor...";
+
+      try {
+        const res = await fetch("/api/auth/login", {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ password: pass })
+        });
+
+        if (passInput) passInput.value = "";
+
+        if (res.ok) {
+          showAdmin();
+        } else if (res.status === 429) {
+          $("#loginError").hidden = false;
+          $("#loginError").textContent = "Çok fazla başarısız deneme yapıldı. Lütfen 15 dakika sonra tekrar deneyin.";
+        } else {
+          $("#loginError").hidden = false;
+          $("#loginError").textContent = "Şifre hatalı!";
+        }
+      } catch (err) {
+        alert("Giriş sırasında hata oluştu: " + err.message);
+      } finally {
+        loginBtn.disabled = false;
+        loginBtn.textContent = "Giriş Yap";
+      }
+    };
   }
 
-  loginBtn.addEventListener("click", () => {
-    try {
-      const pass = $("#loginPassword").value.trim();
-      let storedPass = DEFAULT_PASS;
-      try {
-        storedPass = localStorage.getItem(PASS_KEY) || DEFAULT_PASS;
-      } catch(e) {
-        // localStorage okunamıyor olabilir (gizli sekme vb)
-      }
-      
-      if (pass === storedPass) {
-        try {
-          sessionStorage.setItem("picchio_auth", "1");
-        } catch(e) {}
-        showAdmin();
-      } else {
-        alert("Şifre Hatalı!");
-        $("#loginError").hidden = false;
-        $("#loginError").textContent = "Şifre hatalı!";
-      }
-    } catch(err) {
-      alert("Giriş sırasında hata: " + err.message);
-    }
+  $("#loginPassword")?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") $("#loginBtn")?.click();
   });
+}
 
-  $("#loginPassword").addEventListener("keydown", (e) => {
-    if (e.key === "Enter") $("#loginBtn").click();
-  });
+function showLogin() {
+  $("#adminShell").style.display = "none";
+  $("#adminShell").hidden = true;
+  $("#loginShell").style.display = "flex";
+  $("#loginShell").hidden = false;
 }
 
 function showAdmin() {
   $("#loginShell").style.display = "none";
+  $("#loginShell").hidden = true;
   $("#adminShell").style.display = "block";
+  $("#adminShell").hidden = false;
+
+  loadData();
+  if (window.lucide) window.lucide.createIcons();
+}
   $("#adminShell").hidden = false;
   document.getElementById("summerImageFile")?.addEventListener("change", async (e) => {
     const file = e.target.files[0];
@@ -1149,19 +1244,24 @@ function bindEvents() {
     });
   });
 
+  // Değişiklikleri Yayınla (Central API Push)
+  $("#publishBtn")?.addEventListener("click", publishCentralMenu);
+
   // Export
-  $("#exportBtn").addEventListener("click", exportData);
+  $("#exportBtn")?.addEventListener("click", exportData);
 
   // Import
-  $("#importFile").addEventListener("change", (e) => {
+  $("#importFile")?.addEventListener("change", (e) => {
     if (e.target.files[0]) importData(e.target.files[0]);
     e.target.value = "";
   });
 
-  // Çıkış
-  $("#logoutBtn").addEventListener("click", () => {
-    sessionStorage.removeItem("picchio_auth");
-    location.reload();
+  // Çıkış (Logout API)
+  $("#logoutBtn")?.addEventListener("click", async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST", credentials: "include" });
+    } catch(e) {}
+    showLogin();
   });
 
   // Keyboard shortcuts

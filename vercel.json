@@ -7,6 +7,10 @@
     {
       "source": "/admin",
       "destination": "/admin.html"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://api.picchiococktail.com/api/:path*"
     }
   ],
   "redirects": [
