@@ -39,29 +39,8 @@ async function main() {
   // Zero out password in memory
   password = '';
 
-  const envPath = path.join(__dirname, '../../.env');
-  if (!fs.existsSync(envPath)) {
-    console.error('ERROR: .env file not found at ' + envPath);
-    process.exit(1);
-  }
-
-  let envContent = fs.readFileSync(envPath, 'utf8');
-
-  // Replace or append ADMIN_PASSWORD_HASH safely with single quotes
-  const hashLine = `ADMIN_PASSWORD_HASH='${hash}'`;
-  if (/^ADMIN_PASSWORD_HASH=/m.test(envContent)) {
-    envContent = envContent.replace(/^ADMIN_PASSWORD_HASH=.*$/m, hashLine);
-  } else {
-    envContent += `\n${hashLine}\n`;
-  }
-
-  // Write atomically via temporary file
-  const tmpPath = envPath + '.tmp';
-  fs.writeFileSync(tmpPath, envContent, { mode: 0o600 });
-  fs.renameSync(tmpPath, envPath);
-  fs.chmodSync(envPath, 0o600);
-
-  console.log('SUCCESS: Admin password hash updated securely in .env file.');
+  // Output raw hash to stdout
+  process.stdout.write(hash);
 }
 
 main().catch((err) => {
