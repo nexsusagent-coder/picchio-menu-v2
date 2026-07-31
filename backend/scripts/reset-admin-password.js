@@ -13,8 +13,8 @@ async function main() {
   // Strip trailing newlines from stdin pipe
   password = password.replace(/[\r\n]+$/, '');
 
-  if (!password || password.length < 8 || password.length > 128) {
-    console.error('ERROR: Password length must be between 8 and 128 characters.');
+  if (!password || password.length < 1 || password.length > 128) {
+    console.error('ERROR: Password length must be between 1 and 128 characters.');
     process.exit(1);
   }
 
