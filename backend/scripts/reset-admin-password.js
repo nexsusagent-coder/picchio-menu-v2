@@ -13,18 +13,13 @@ async function main() {
   // Strip trailing newlines from stdin pipe
   password = password.replace(/[\r\n]+$/, '');
 
-  if (!password || password.length < 14) {
-    console.error('ERROR: Password must be at least 14 characters.');
+  if (!password || password.length < 8 || password.length > 128) {
+    console.error('ERROR: Password length must be between 8 and 128 characters.');
     process.exit(1);
   }
 
-  // Validate complexity: letters, numbers, special characters
-  const hasLetter = /[a-zA-Z]/.test(password);
-  const hasDigit = /[0-9]/.test(password);
-  const hasSpecial = /[^a-zA-Z0-9]/.test(password);
-
-  if (!hasLetter || !hasDigit || !hasSpecial) {
-    console.error('ERROR: Password must contain letters, numbers, and special characters.');
+  if (password === 'admin') {
+    console.error('ERROR: Password "admin" is not allowed.');
     process.exit(1);
   }
 
