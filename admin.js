@@ -93,13 +93,7 @@ async function loadData() {
   updateStats();
 }
 
-function saveData() {
-  if (menuData) {
-    try {
-      localStorage.setItem("picchio_admin_draft", JSON.stringify(menuData));
-    } catch(e) {}
-  }
-}
+const API_CACHE_KEY = "picchio_menu_api_cache_v1";
 
 function updatePublishStatus(version, updatedAt) {
   const statusEl = document.getElementById("publishStatus");
@@ -109,7 +103,7 @@ function updatePublishStatus(version, updatedAt) {
   }
 }
 
-async function publishCentralMenu() {
+async function saveMenuToCentralApi() {
   if (!menuData || !menuData.categories || menuData.categories.length === 0) {
     alert("Hata: Menü verisi boş olamaz!");
     return;
@@ -147,6 +141,16 @@ async function publishCentralMenu() {
     if (updated && updated.data) {
       menuData = updated.data;
       updatePublishStatus(updated.version, updated.updatedAt);
+
+      // Update API cache
+      try {
+        localStorage.setItem(API_CACHE_KEY, JSON.stringify({
+          data: updated.data,
+          version: updated.version,
+          updatedAt: updated.updatedAt
+        }));
+      } catch(e) {}
+
       toast("Değişiklikler kaydedildi ve tüm cihazlarda yayınlandı. ✓");
     }
   } catch (err) {
@@ -158,6 +162,14 @@ async function publishCentralMenu() {
       if (window.lucide) window.lucide.createIcons();
     }
   }
+}
+
+function saveData() {
+  saveMenuToCentralApi();
+}
+
+function publishCentralMenu() {
+  saveMenuToCentralApi();
 }
 
 /* ─── Ağaçta düğüm bulma ─── */

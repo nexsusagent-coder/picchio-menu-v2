@@ -575,7 +575,9 @@ window.applyGlobalSettings = function(settings) {
   if (window.lucide) window.lucide.createIcons();
 };
 
-function loadAndRenderMenu() {
+const API_CACHE_KEY = "picchio_menu_api_cache_v1";
+
+function loadAndRenderMenu(isBackgroundCheck = false) {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 6000);
 
@@ -587,36 +589,56 @@ function loadAndRenderMenu() {
     })
     .then((res) => {
       if (res && res.data && res.data.categories && Array.isArray(res.data.categories) && res.data.categories.length > 0) {
+        // If background check and version hasn't changed, do nothing
+        if (isBackgroundCheck && state.version && state.version === res.version) {
+          return;
+        }
+
+        const isVersionChanged = state.version && state.version !== res.version;
         state.payload = res.data;
+        state.version = res.version;
+
         try {
-          localStorage.setItem("picchio_menu_cache", JSON.stringify({
+          localStorage.setItem(API_CACHE_KEY, JSON.stringify({
             data: res.data,
             version: res.version,
             updatedAt: res.updatedAt
           }));
+          // Clean up deprecated keys
+          localStorage.removeItem("picchio_menu_cache");
+          localStorage.removeItem("picchio_menu_data");
         } catch(e) {}
 
-        state.path = currentHistoryPath();
-        render();
-        if (state.payload && state.payload.settings) {
-          window.applyGlobalSettings(state.payload.settings);
+        if (!isBackgroundCheck || isVersionChanged) {
+          if (!isBackgroundCheck) {
+            state.path = currentHistoryPath();
+          }
+          render();
+          if (state.payload && state.payload.settings) {
+            window.applyGlobalSettings(state.payload.settings);
+          }
+          if (!isBackgroundCheck) {
+            writeHistory("replace");
+          }
         }
-        writeHistory("replace");
         return;
       }
       throw new Error("Invalid API payload");
     })
     .catch((err) => {
       clearTimeout(timeoutId);
+      if (isBackgroundCheck) return; // Silent failure on background polling
+
       console.warn("Central API fetch failed or timed out, trying offline cache fallback:", err.message);
 
-      // Try LocalStorage Cache
+      // Try LocalStorage Cache v1
       let cached = null;
       try {
-        const storedCache = localStorage.getItem("picchio_menu_cache") || localStorage.getItem("picchio_menu_data");
+        const storedCache = localStorage.getItem(API_CACHE_KEY);
         if (storedCache) {
           const parsed = JSON.parse(storedCache);
           cached = parsed.data ? parsed.data : parsed;
+          if (parsed.version) state.version = parsed.version;
         }
       } catch(e) {}
 
@@ -651,9 +673,22 @@ function loadAndRenderMenu() {
 
 loadAndRenderMenu();
 
+// Background 60s auto-refresh & visibility/focus triggers
+setInterval(() => loadAndRenderMenu(true), 60000);
+
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") {
+    loadAndRenderMenu(true);
+  }
+});
+
+window.addEventListener("focus", () => {
+  loadAndRenderMenu(true);
+});
+
 window.addEventListener("storage", (e) => {
-  if (e.key === "picchio_menu_cache" || e.key === "picchio_menu_data") {
-    loadAndRenderMenu();
+  if (e.key === API_CACHE_KEY) {
+    loadAndRenderMenu(true);
   }
 });
 
