@@ -225,7 +225,7 @@ async function initLogin() {
   if (loginBtn) {
     loginBtn.onclick = async () => {
       const passInput = $("#loginPassword");
-      const pass = passInput ? passInput.value.trim() : "";
+      const pass = passInput ? passInput.value : "";
 
       if (!pass) {
         $("#loginError").hidden = false;
@@ -250,21 +250,23 @@ async function initLogin() {
           showAdmin();
         } else {
           $("#loginError").hidden = false;
-          if (res.status === 401) {
-            $("#loginError").textContent = "Parola hatalı!";
+          if (res.status === 400) {
+            $("#loginError").textContent = "Giriş isteği geçersiz.";
+          } else if (res.status === 401) {
+            $("#loginError").textContent = "Parola hatalı.";
           } else if (res.status === 403) {
             $("#loginError").textContent = "Bu ortamdan girişe izin verilmiyor.";
           } else if (res.status === 429) {
-            $("#loginError").textContent = "Çok fazla başarısız deneme yapıldı. Lütfen 15 dakika sonra tekrar deneyin.";
+            $("#loginError").textContent = "Çok fazla giriş denemesi yapıldı. Bir süre bekleyin.";
           } else if (res.status >= 500) {
-            $("#loginError").textContent = "Sunucu hatası! Lütfen daha sonra tekrar deneyin.";
+            $("#loginError").textContent = "Sunucu hatası oluştu.";
           } else {
             $("#loginError").textContent = "Giriş başarısız (" + res.status + ").";
           }
         }
       } catch (err) {
         $("#loginError").hidden = false;
-        $("#loginError").textContent = "Sunucuya ulaşılamıyor: " + err.message;
+        $("#loginError").textContent = "Sunucuya ulaşılamıyor.";
       } finally {
         loginBtn.disabled = false;
         loginBtn.textContent = "Giriş Yap";
