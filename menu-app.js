@@ -618,6 +618,9 @@ window.applyGlobalSettings = function(settings) {
       } else {
         ig.style.display = "none";
       }
+    }
+  }
+
   // 7. Açılış Görseli / Karşılama Popup'ı
   if (settings.openingPopup) {
     checkAndShowOpeningPopup(settings.openingPopup);
@@ -640,15 +643,16 @@ function checkAndShowOpeningPopup(popupConfig) {
   const dailyKey = `picchio_opening_popup_daily_${popupVersion}`;
   const todayStr = new Date().toISOString().slice(0, 10);
 
-  if (displayMode === "once_per_session") {
-    if (sessionStorage.getItem(sessionKey) === "dismissed") {
-      return;
+  let isDismissed = false;
+  try {
+    if (displayMode === "once_per_session") {
+      isDismissed = sessionStorage.getItem(sessionKey) === "dismissed";
+    } else if (displayMode === "once_per_day") {
+      isDismissed = localStorage.getItem(dailyKey) === todayStr;
     }
-  } else if (displayMode === "once_per_day") {
-    if (localStorage.getItem(dailyKey) === todayStr) {
-      return;
-    }
-  }
+  } catch(e) {}
+
+  if (isDismissed) return;
 
   const existingOverlay = document.getElementById("openingPopupOverlay");
   if (existingOverlay) existingOverlay.remove();
@@ -684,11 +688,13 @@ function checkAndShowOpeningPopup(popupConfig) {
     document.body.style.overflow = prevOverflow || "";
     document.removeEventListener("keydown", handleKeyDown);
 
-    if (displayMode === "once_per_session") {
-      sessionStorage.setItem(sessionKey, "dismissed");
-    } else if (displayMode === "once_per_day") {
-      localStorage.setItem(dailyKey, todayStr);
-    }
+    try {
+      if (displayMode === "once_per_session") {
+        sessionStorage.setItem(sessionKey, "dismissed");
+      } else if (displayMode === "once_per_day") {
+        localStorage.setItem(dailyKey, todayStr);
+      }
+    } catch(e) {}
   }
 
   function handleKeyDown(e) {
