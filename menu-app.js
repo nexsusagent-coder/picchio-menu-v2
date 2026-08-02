@@ -10,8 +10,6 @@ const subtitle   = document.querySelector("[data-flow-subtitle]");
 const shell      = document.querySelector(".menu-flow-shell");
 
 /* ─── Yardımcı fonksiyonlar ─── */
-const moneyRank = (price) => Number(String(price || "").replace(/[^\d]/g, "")) || 0;
-
 const scrollToMenuTop = () => {
   document.querySelector(".menu-flow-shell")?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
@@ -362,9 +360,7 @@ const renderItemsStep = () => {
     return;
   }
 
-  const itemCards = items
-    .sort((a, b) => Number(b.featured) - Number(a.featured) || moneyRank(b.price) - moneyRank(a.price))
-    .map((item) => `
+  const itemCards = items.map((item) => `
       <article class="lux-menu-card scroll-reveal ${item.imageUrl ? 'has-image' : ''}">
         ${item.imageUrl ? `
         <div class="lux-menu-card-image" data-lightbox-src="${item.imageUrl}" style="cursor: pointer;">
