@@ -891,9 +891,11 @@ function openItemModal(item = null, index = -1) {
     if ($("#itemStockLabelInput")) $("#itemStockLabelInput").value = item.stockLabel !== undefined ? item.stockLabel : "STOKTA YOK";
     if ($("#itemStockStampEnabledCheckbox")) $("#itemStockStampEnabledCheckbox").checked = item.stockStampEnabled !== false;
     if ($("#itemStockCardDimmedCheckbox")) $("#itemStockCardDimmedCheckbox").checked = item.stockCardDimmed !== false;
-    if ($("#itemStockStampTextColorInput")) $("#itemStockStampTextColorInput").value = item.stockStampTextColor || "#B33A3A";
-    if ($("#itemStockStampBorderColorInput")) $("#itemStockStampBorderColorInput").value = item.stockStampBorderColor || "#B33A3A";
-    if ($("#itemStockStampBackgroundColorInput")) $("#itemStockStampBackgroundColorInput").value = item.stockStampBackgroundColor || "rgba(179,58,58,0.06)";
+    if ($("#itemStockStampTextColorInput")) $("#itemStockStampTextColorInput").value = item.stockStampTextColor || "#C53B3B";
+    if ($("#itemStockStampBorderColorInput")) $("#itemStockStampBorderColorInput").value = item.stockStampBorderColor || "#C53B3B";
+    if ($("#itemStockStampBackgroundColorInput")) $("#itemStockStampBackgroundColorInput").value = item.stockStampBackgroundColor || "rgba(197,59,59,0.04)";
+    if ($("#itemStockStampOpacityInput")) $("#itemStockStampOpacityInput").value = item.stockStampOpacity !== undefined && item.stockStampOpacity !== null ? item.stockStampOpacity : 0.55;
+    if ($("#itemStockStampSizeSelect")) $("#itemStockStampSizeSelect").value = item.stockStampSize || "medium";
     
     currentItemImage = item.imageUrl || "";
     if (currentItemImage) {
@@ -959,9 +961,11 @@ function saveItem(formData) {
     stockLabel: formData.stockLabel !== undefined ? formData.stockLabel : "STOKTA YOK",
     stockStampEnabled: formData.stockStampEnabled !== false,
     stockCardDimmed: formData.stockCardDimmed !== false,
-    stockStampTextColor: formData.stockStampTextColor || "#B33A3A",
-    stockStampBorderColor: formData.stockStampBorderColor || "#B33A3A",
-    stockStampBackgroundColor: formData.stockStampBackgroundColor || "rgba(179,58,58,0.06)",
+    stockStampTextColor: formData.stockStampTextColor || "#C53B3B",
+    stockStampBorderColor: formData.stockStampBorderColor || "#C53B3B",
+    stockStampBackgroundColor: formData.stockStampBackgroundColor || "rgba(197,59,59,0.04)",
+    stockStampOpacity: formData.stockStampOpacity !== undefined && formData.stockStampOpacity !== null && formData.stockStampOpacity !== "" ? Number(formData.stockStampOpacity) : 0.55,
+    stockStampSize: formData.stockStampSize || "medium",
     imageUrl: currentItemImage || null,
     nutrition: hasNutrition
       ? {
@@ -1287,9 +1291,11 @@ function bindEvents() {
       stockLabel: fd.get("stockLabel") ?? "STOKTA YOK",
       stockStampEnabled: fd.get("stockStampEnabled") !== null,
       stockCardDimmed: fd.get("stockCardDimmed") !== null,
-      stockStampTextColor: fd.get("stockStampTextColor") || "#B33A3A",
-      stockStampBorderColor: fd.get("stockStampBorderColor") || "#B33A3A",
-      stockStampBackgroundColor: fd.get("stockStampBackgroundColor") || "rgba(179,58,58,0.06)",
+      stockStampTextColor: fd.get("stockStampTextColor") || "#C53B3B",
+      stockStampBorderColor: fd.get("stockStampBorderColor") || "#C53B3B",
+      stockStampBackgroundColor: fd.get("stockStampBackgroundColor") || "rgba(197,59,59,0.04)",
+      stockStampOpacity: fd.get("stockStampOpacity") ?? "0.55",
+      stockStampSize: fd.get("stockStampSize") || "medium",
       portionNote: fd.get("portionNote"),
       caloriesKcal: fd.get("caloriesKcal"),
       proteinG: fd.get("proteinG"),

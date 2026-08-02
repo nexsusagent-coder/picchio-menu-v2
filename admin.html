@@ -432,17 +432,31 @@
 
                   <label>
                     <span>Damga Yazı Rengi</span>
-                    <input type="color" name="stockStampTextColor" id="itemStockStampTextColorInput" value="#B33A3A" />
+                    <input type="color" name="stockStampTextColor" id="itemStockStampTextColorInput" value="#C53B3B" />
                   </label>
 
                   <label>
                     <span>Damga Çerçeve Rengi</span>
-                    <input type="color" name="stockStampBorderColor" id="itemStockStampBorderColorInput" value="#B33A3A" />
+                    <input type="color" name="stockStampBorderColor" id="itemStockStampBorderColorInput" value="#C53B3B" />
+                  </label>
+
+                  <label>
+                    <span>Damga Şeffaflığı (Opacity 0.1 - 1.0)</span>
+                    <input type="number" step="0.05" min="0.1" max="1.0" name="stockStampOpacity" id="itemStockStampOpacityInput" value="0.55" placeholder="0.55" />
+                  </label>
+
+                  <label>
+                    <span>Damga Boyutu</span>
+                    <select name="stockStampSize" id="itemStockStampSizeSelect" style="width: 100%; min-height: 38px; padding: 0 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); font: inherit; outline: none; background: white;">
+                      <option value="small">Küçük (Small)</option>
+                      <option value="medium" selected>Orta (Medium)</option>
+                      <option value="large">Büyük (Large)</option>
+                    </select>
                   </label>
 
                   <label class="full-width">
                     <span>Damga Arka Plan Rengi</span>
-                    <input type="text" name="stockStampBackgroundColor" id="itemStockStampBackgroundColorInput" value="rgba(179,58,58,0.06)" placeholder="rgba(179,58,58,0.06)" />
+                    <input type="text" name="stockStampBackgroundColor" id="itemStockStampBackgroundColorInput" value="rgba(197,59,59,0.04)" placeholder="rgba(197,59,59,0.04)" />
                   </label>
                 </div>
               </div>

@@ -382,9 +382,11 @@ const renderItemsStep = () => {
     const rawStockLabel = item.stockLabel !== undefined ? item.stockLabel : "STOKTA YOK";
     const stockLabel = String(rawStockLabel || "").trim();
 
-    const stampTextColor = item.stockStampTextColor || "#B33A3A";
-    const stampBorderColor = item.stockStampBorderColor || "#B33A3A";
-    const stampBgColor = item.stockStampBackgroundColor || "rgba(179,58,58,0.06)";
+    const stampTextColor = item.stockStampTextColor || "#C53B3B";
+    const stampBorderColor = item.stockStampBorderColor || "#C53B3B";
+    const stampBgColor = item.stockStampBackgroundColor || "rgba(197,59,59,0.04)";
+    const stampOpacity = item.stockStampOpacity !== undefined && item.stockStampOpacity !== null ? Number(item.stockStampOpacity) : 0.55;
+    const stampSize = item.stockStampSize || "medium";
 
     const cardClasses = [
       "lux-menu-card",
@@ -397,7 +399,7 @@ const renderItemsStep = () => {
     return `
       <article class="${cardClasses}">
         ${isStampEnabled && stockLabel ? `
-        <div class="stock-diagonal-stamp" style="color: ${stampTextColor}; border-color: ${stampBorderColor}; background-color: ${stampBgColor};">
+        <div class="stock-diagonal-stamp stamp-size-${stampSize}" style="color: ${stampTextColor}; border-color: ${stampBorderColor}; background-color: ${stampBgColor}; opacity: ${stampOpacity};">
           <span>${stockLabel}</span>
         </div>
         ` : ""}

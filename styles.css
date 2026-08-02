@@ -834,47 +834,76 @@ h3 { font-size: 26px; line-height: 1.05; }
 }
 
 .lux-menu-card.is-out-of-stock.is-dimmed {
-  opacity: 0.68;
-  filter: saturate(0.45);
+  opacity: 0.72;
+  filter: saturate(0.5);
 }
 
 .lux-menu-card.is-out-of-stock.is-dimmed .lux-menu-card-image img {
-  filter: grayscale(0.75);
+  filter: grayscale(0.65);
 }
 
+/* ─── STOKTA YOK ÇAPRAZ DAMGA (ELEGANT SUBTLE STAMP) ─── */
 .stock-diagonal-stamp {
   position: absolute;
-  top: 20px;
-  right: 16px;
-  transform: rotate(-14deg);
-  padding: 5px 14px;
-  border: 2px solid #B33A3A;
-  border-radius: 6px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  padding: 4px 14px;
+  border: 1.5px solid #C53B3B;
+  border-radius: 5px;
+  font-family: var(--font-heading, 'Playfair Display', Georgia, serif);
   font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 0.18em;
+  font-weight: 800;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #B33A3A;
-  background-color: rgba(179, 58, 58, 0.06);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  color: #C53B3B;
+  background-color: rgba(197, 59, 59, 0.04);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   pointer-events: none;
   z-index: 10;
   white-space: nowrap;
   user-select: none;
-  max-width: 85%;
+  max-width: 88%;
   line-height: 1.2;
+  text-align: center;
+  transition: opacity 200ms ease;
+}
+
+/* Stamp Sizes */
+.stock-diagonal-stamp.stamp-size-small {
+  font-size: 9.5px;
+  padding: 3px 10px;
+  border-width: 1px;
+  letter-spacing: 0.14em;
+}
+
+.stock-diagonal-stamp.stamp-size-medium {
+  font-size: 11px;
+  padding: 4px 14px;
+  border-width: 1.5px;
+  letter-spacing: 0.16em;
+}
+
+.stock-diagonal-stamp.stamp-size-large {
+  font-size: 13px;
+  padding: 6px 18px;
+  border-width: 2px;
+  letter-spacing: 0.2em;
 }
 
 @media (max-width: 600px) {
-  .stock-diagonal-stamp {
-    top: 14px;
-    right: 12px;
-    padding: 4px 10px;
+  .stock-diagonal-stamp.stamp-size-small {
+    font-size: 8.5px;
+    padding: 2px 8px;
+  }
+  .stock-diagonal-stamp.stamp-size-medium {
     font-size: 9.5px;
-    letter-spacing: 0.14em;
-    border-width: 1.5px;
+    padding: 3px 10px;
+  }
+  .stock-diagonal-stamp.stamp-size-large {
+    font-size: 11px;
+    padding: 4px 14px;
   }
 }
 
