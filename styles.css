@@ -118,7 +118,7 @@ h3 { font-size: 26px; line-height: 1.05; }
 
 /* ─── BRAND LOGO IMAGE ─── */
 .brand-logo {
-  height: 32px;
+  height: 44px;
   width: auto;
   object-fit: contain;
   filter: none;
@@ -141,7 +141,7 @@ h3 { font-size: 26px; line-height: 1.05; }
 
 /* ─── FOOTER LOGO IMAGE ─── */
 .footer-brand-logo {
-  height: 28px;
+  height: 42px;
   width: auto;
   object-fit: contain;
   filter: none;
@@ -1389,9 +1389,9 @@ h3 { font-size: 26px; line-height: 1.05; }
   }
 
   .brand-logo {
-    height: 28px !important;
+    height: 38px !important;
     width: auto !important;
-    max-width: 105px !important;
+    max-width: 150px !important;
     object-fit: contain !important;
     display: block !important;
     margin: auto 0 !important;
@@ -1595,8 +1595,12 @@ h3 { font-size: 26px; line-height: 1.05; }
   }
 
   .brand-logo {
-    max-width: 85px !important;
-    height: 24px !important;
+    max-width: 130px !important;
+    height: 34px !important;
+  }
+
+  .footer-brand-logo {
+    height: 36px !important;
   }
 
   .header-actions {
