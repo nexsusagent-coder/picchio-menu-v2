@@ -25,7 +25,10 @@ let menuData = null;
 let selectedCatPath = []; // [catId, subCatId, ...]
 let editingItemIndex = -1;
 
+let currentSummerImage = "";
+let currentHappyImage = "";
 let currentItemImage = "";
+let currentOpeningPopupImage = "";
 
 async function compressImage(file) {
   return new Promise((resolve) => {
@@ -364,6 +367,30 @@ function showAdmin() {
     document.getElementById("itemImageRemoveBtn").style.display = "none";
   });
 
+  document.getElementById("openingPopupImageFile")?.addEventListener("change", async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      currentOpeningPopupImage = await compressImage(file);
+      const preview = document.getElementById("openingPopupImagePreview");
+      if (preview) {
+        preview.src = currentOpeningPopupImage;
+        preview.style.display = "block";
+      }
+      const rm = document.getElementById("openingPopupImageRemoveBtn");
+      if (rm) rm.style.display = "block";
+    }
+  });
+
+  document.getElementById("openingPopupImageRemoveBtn")?.addEventListener("click", () => {
+    currentOpeningPopupImage = "";
+    const inp = document.getElementById("openingPopupImageFile");
+    if (inp) inp.value = "";
+    const preview = document.getElementById("openingPopupImagePreview");
+    if (preview) preview.style.display = "none";
+    const rm = document.getElementById("openingPopupImageRemoveBtn");
+    if (rm) rm.style.display = "none";
+  });
+
   $("#catTree").addEventListener("dragstart", (e) => {
     const node = e.target.closest(".cat-node");
     if (!node) return;
@@ -623,6 +650,23 @@ function renderSettingsEditor() {
   if (form.addressInput) form.addressInput.value = s.contact?.address || "";
   if (form.mapsUrlInput) form.mapsUrlInput.value = s.contact?.mapsUrl || "";
   if (form.workingHoursInput) form.workingHoursInput.value = s.contact?.workingHours || "";
+
+  const pop = s.openingPopup || {};
+  if ($("#openingPopupEnabled")) $("#openingPopupEnabled").checked = pop.enabled !== false;
+  currentOpeningPopupImage = pop.imageUrl || "";
+  if ($("#openingPopupClosePosition")) $("#openingPopupClosePosition").value = pop.closeButtonPosition || "right";
+  if ($("#openingPopupDisplayMode")) $("#openingPopupDisplayMode").value = pop.displayMode || "once_per_session";
+
+  const popupPreview = document.getElementById("openingPopupImagePreview");
+  const popupRemoveBtn = document.getElementById("openingPopupImageRemoveBtn");
+  if (currentOpeningPopupImage && popupPreview && popupRemoveBtn) {
+    popupPreview.src = currentOpeningPopupImage;
+    popupPreview.style.display = "block";
+    popupRemoveBtn.style.display = "block";
+  } else if (popupPreview && popupRemoveBtn) {
+    popupPreview.style.display = "none";
+    popupRemoveBtn.style.display = "none";
+  }
 }
 
 const FONT_PRESETS = {
@@ -1184,6 +1228,14 @@ function bindEvents() {
         mapsUrl: form.mapsUrlInput ? form.mapsUrlInput.value : "",
         workingHours: form.workingHoursInput ? form.workingHoursInput.value : ""
       },
+      openingPopup: {
+        enabled: $("#openingPopupEnabled") ? $("#openingPopupEnabled").checked : true,
+        imageUrl: currentOpeningPopupImage,
+        closeButtonPosition: $("#openingPopupClosePosition") ? $("#openingPopupClosePosition").value : "right",
+        displayMode: $("#openingPopupDisplayMode") ? $("#openingPopupDisplayMode").value : "once_per_session",
+        version: currentOpeningPopupImage !== (menuData.settings?.openingPopup?.imageUrl || "") ? ((menuData.settings?.openingPopup?.version || 1) + 1) : (menuData.settings?.openingPopup?.version || 1),
+        updatedAt: currentOpeningPopupImage !== (menuData.settings?.openingPopup?.imageUrl || "") ? Date.now() : (menuData.settings?.openingPopup?.updatedAt || Date.now())
+      }
     };
     saveData();
     toast("Site ayarları güncellendi ✓");

@@ -36,6 +36,14 @@
       "mapsUrl": "https://maps.app.goo.gl/v5GvuNbJLZMRkTnV6",
       "workingHours": "Her gün: 12:00 – 02:00"
     },
+    "openingPopup": {
+      "enabled": true,
+      "imageUrl": "assets/images/opening-popup.png",
+      "closeButtonPosition": "right",
+      "displayMode": "once_per_session",
+      "version": 1,
+      "updatedAt": 1785674413794
+    },
     "announcements": {
       "summerBanner": {
         "active": true,

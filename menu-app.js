@@ -618,11 +618,103 @@ window.applyGlobalSettings = function(settings) {
       } else {
         ig.style.display = "none";
       }
-    }
+  // 7. Açılış Görseli / Karşılama Popup'ı
+  if (settings.openingPopup) {
+    checkAndShowOpeningPopup(settings.openingPopup);
   }
 
   if (window.lucide) window.lucide.createIcons();
 };
+
+function checkAndShowOpeningPopup(popupConfig) {
+  if (!popupConfig) return;
+  if (popupConfig.enabled === false) return;
+  if (!popupConfig.imageUrl || !popupConfig.imageUrl.trim()) return;
+
+  const displayMode = popupConfig.displayMode || "once_per_session";
+  const closePosition = popupConfig.closeButtonPosition === "left" ? "left" : "right";
+  const imageUrl = popupConfig.imageUrl.trim();
+  const popupVersion = popupConfig.updatedAt || popupConfig.version || imageUrl;
+
+  const sessionKey = `picchio_opening_popup_session_${popupVersion}`;
+  const dailyKey = `picchio_opening_popup_daily_${popupVersion}`;
+  const todayStr = new Date().toISOString().slice(0, 10);
+
+  if (displayMode === "once_per_session") {
+    if (sessionStorage.getItem(sessionKey) === "dismissed") {
+      return;
+    }
+  } else if (displayMode === "once_per_day") {
+    if (localStorage.getItem(dailyKey) === todayStr) {
+      return;
+    }
+  }
+
+  const existingOverlay = document.getElementById("openingPopupOverlay");
+  if (existingOverlay) existingOverlay.remove();
+
+  const overlay = document.createElement("div");
+  overlay.id = "openingPopupOverlay";
+  overlay.className = "opening-popup-overlay";
+
+  const closeBtnClass = closePosition === "left" ? "opening-popup-close close-left" : "opening-popup-close close-right";
+
+  overlay.innerHTML = `
+    <div class="opening-popup-content">
+      <button type="button" class="${closeBtnClass}" aria-label="Kapat" id="openingPopupCloseBtn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <img src="${imageUrl}" alt="Açılış Görseli" class="opening-popup-image" id="openingPopupImg" />
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  const prevOverflow = document.body.style.overflow;
+  document.body.style.overflow = "hidden";
+
+  let closed = false;
+  function closePopup() {
+    if (closed) return;
+    closed = true;
+    overlay.remove();
+    document.body.style.overflow = prevOverflow || "";
+    document.removeEventListener("keydown", handleKeyDown);
+
+    if (displayMode === "once_per_session") {
+      sessionStorage.setItem(sessionKey, "dismissed");
+    } else if (displayMode === "once_per_day") {
+      localStorage.setItem(dailyKey, todayStr);
+    }
+  }
+
+  function handleKeyDown(e) {
+    if (e.key === "Escape") {
+      closePopup();
+    }
+  }
+
+  const closeBtn = document.getElementById("openingPopupCloseBtn");
+  if (closeBtn) closeBtn.addEventListener("click", closePopup);
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay || e.target.classList.contains("opening-popup-content")) {
+      closePopup();
+    }
+  });
+
+  document.addEventListener("keydown", handleKeyDown);
+
+  const imgEl = document.getElementById("openingPopupImg");
+  if (imgEl) {
+    imgEl.addEventListener("error", () => {
+      closePopup();
+    });
+  }
+}
 
 const API_CACHE_KEY = "picchio_menu_api_cache_v1";
 

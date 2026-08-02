@@ -345,6 +345,44 @@
                 </div>
               </details>
 
+              <!-- AÇILIŞ GÖRSELİ / KARŞILAMA POPUP'I -->
+              <details open>
+                <summary>Açılış Görseli / Karşılama Popup’ı</summary>
+                <div class="form-grid">
+                  <label class="checkbox-label full-width">
+                    <input type="checkbox" id="openingPopupEnabled" checked />
+                    <span>Popup Aktif (Müşterilere Göster)</span>
+                  </label>
+
+                  <label class="full-width">
+                    <span>Görsel Yükle</span>
+                    <input type="file" id="openingPopupImageFile" accept="image/*" />
+                  </label>
+                  
+                  <div class="full-width" style="display:flex; align-items:center; gap:12px; margin-top:4px;">
+                    <img id="openingPopupImagePreview" style="max-height:140px; border-radius:8px; display:none; object-fit:contain; border:1px solid var(--border);" />
+                    <button type="button" id="openingPopupImageRemoveBtn" class="btn-secondary" style="display:none; padding:6px 12px; font-size:12px; color:var(--wine); border:1px solid var(--wine); border-radius:4px;">Görseli Kaldır</button>
+                  </div>
+
+                  <label>
+                    <span>Kapatma Butonu Konumu</span>
+                    <select id="openingPopupClosePosition" style="width: 100%; min-height: 40px; padding: 0 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); font: inherit; outline: none; background: white;">
+                      <option value="right" selected>Sağ Üst (Right)</option>
+                      <option value="left">Sol Üst (Left)</option>
+                    </select>
+                  </label>
+
+                  <label>
+                    <span>Gösterim Sıklığı</span>
+                    <select id="openingPopupDisplayMode" style="width: 100%; min-height: 40px; padding: 0 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); font: inherit; outline: none; background: white;">
+                      <option value="every_visit">Her ziyarette</option>
+                      <option value="once_per_session" selected>Oturumda bir kez</option>
+                      <option value="once_per_day">Günde bir kez</option>
+                    </select>
+                  </label>
+                </div>
+              </details>
+
               <div class="form-actions" style="margin-top: 24px;">
                 <button type="submit" class="btn btn-gold">Ayarları Kaydet</button>
               </div>
