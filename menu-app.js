@@ -382,10 +382,10 @@ const renderItemsStep = () => {
     const rawStockLabel = item.stockLabel !== undefined ? item.stockLabel : "STOKTA YOK";
     const stockLabel = String(rawStockLabel || "").trim();
 
-    const stampTextColor = item.stockStampTextColor || "#C53B3B";
-    const stampBorderColor = item.stockStampBorderColor || "#C53B3B";
-    const stampBgColor = item.stockStampBackgroundColor || "rgba(197,59,59,0.04)";
-    const stampOpacity = item.stockStampOpacity !== undefined && item.stockStampOpacity !== null ? Number(item.stockStampOpacity) : 0.55;
+    const stampTextColor = item.stockStampTextColor || item.stockStampColor || "#C44747";
+    const stampBorderColor = item.stockStampBorderColor || item.stockStampColor || "#C44747";
+    const stampBgColor = item.stockStampBackgroundColor || "rgba(255,250,247,0.40)";
+    const stampOpacity = item.stockStampOpacity !== undefined && item.stockStampOpacity !== null ? Number(item.stockStampOpacity) : 0.52;
     const stampSize = item.stockStampSize || "medium";
 
     const cardClasses = [

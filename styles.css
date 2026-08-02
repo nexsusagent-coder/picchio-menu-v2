@@ -833,77 +833,96 @@ h3 { font-size: 26px; line-height: 1.05; }
   white-space: nowrap;
 }
 
-.lux-menu-card.is-out-of-stock.is-dimmed {
-  opacity: 0.72;
-  filter: saturate(0.5);
+/* ─── STOKTA YOK KARTİ & DAMGA (REFINED OVERLAY) ─── */
+.lux-menu-card.is-out-of-stock {
+  position: relative;
 }
 
 .lux-menu-card.is-out-of-stock.is-dimmed .lux-menu-card-image img {
-  filter: grayscale(0.65);
+  filter: grayscale(0.75) saturate(0.35);
+  opacity: 0.72;
 }
 
-/* ─── STOKTA YOK ÇAPRAZ DAMGA (ELEGANT SUBTLE STAMP) ─── */
+.lux-menu-card.is-out-of-stock.is-dimmed .lux-menu-card-content {
+  opacity: 0.72;
+}
+
+.stock-status-stamp,
 .stock-diagonal-stamp {
   position: absolute;
-  top: 50%;
   left: 50%;
+  top: 55%;
+  width: min(60%, 410px);
   transform: translate(-50%, -50%) rotate(-12deg);
-  padding: 4px 14px;
-  border: 1.5px solid #C53B3B;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 20px;
+  border: 2.5px solid var(--stock-stamp-color, #C44747);
   border-radius: 5px;
-  font-family: var(--font-heading, 'Playfair Display', Georgia, serif);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #C53B3B;
-  background-color: rgba(197, 59, 59, 0.04);
+
+  color: var(--stock-stamp-color, #C44747);
+  background: rgba(255, 250, 247, 0.40);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
+
+  font-size: clamp(22px, 2.3vw, 34px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  opacity: var(--stock-stamp-opacity, 0.52);
   pointer-events: none;
-  z-index: 10;
   white-space: nowrap;
   user-select: none;
-  max-width: 88%;
-  line-height: 1.2;
-  text-align: center;
-  transition: opacity 200ms ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
 
-/* Stamp Sizes */
+.stock-status-stamp.stamp-size-small,
 .stock-diagonal-stamp.stamp-size-small {
-  font-size: 9.5px;
-  padding: 3px 10px;
-  border-width: 1px;
-  letter-spacing: 0.14em;
-}
-
-.stock-diagonal-stamp.stamp-size-medium {
-  font-size: 11px;
-  padding: 4px 14px;
-  border-width: 1.5px;
-  letter-spacing: 0.16em;
-}
-
-.stock-diagonal-stamp.stamp-size-large {
-  font-size: 13px;
-  padding: 6px 18px;
+  width: min(50%, 340px);
+  padding: 7px 14px;
+  font-size: clamp(17px, 1.8vw, 26px);
   border-width: 2px;
-  letter-spacing: 0.2em;
 }
 
-@media (max-width: 600px) {
+.stock-status-stamp.stamp-size-large,
+.stock-diagonal-stamp.stamp-size-large {
+  width: min(70%, 450px);
+  padding: 12px 24px;
+  font-size: clamp(25px, 2.7vw, 38px);
+  border-width: 3px;
+}
+
+@media (max-width: 700px) {
+  .stock-status-stamp,
+  .stock-diagonal-stamp {
+    width: 68%;
+    max-width: 300px;
+    padding: 8px 13px;
+    font-size: clamp(18px, 6vw, 25px);
+    top: 54%;
+    border-width: 2px;
+  }
+
+  .stock-status-stamp.stamp-size-small,
   .stock-diagonal-stamp.stamp-size-small {
-    font-size: 8.5px;
-    padding: 2px 8px;
+    width: 58%;
+    max-width: 250px;
+    padding: 6px 10px;
+    font-size: clamp(14px, 4.8vw, 20px);
   }
-  .stock-diagonal-stamp.stamp-size-medium {
-    font-size: 9.5px;
-    padding: 3px 10px;
-  }
+
+  .stock-status-stamp.stamp-size-large,
   .stock-diagonal-stamp.stamp-size-large {
-    font-size: 11px;
-    padding: 4px 14px;
+    width: 76%;
+    max-width: 330px;
+    padding: 10px 16px;
+    font-size: clamp(20px, 6.5vw, 28px);
   }
 }
 

@@ -891,10 +891,10 @@ function openItemModal(item = null, index = -1) {
     if ($("#itemStockLabelInput")) $("#itemStockLabelInput").value = item.stockLabel !== undefined ? item.stockLabel : "STOKTA YOK";
     if ($("#itemStockStampEnabledCheckbox")) $("#itemStockStampEnabledCheckbox").checked = item.stockStampEnabled !== false;
     if ($("#itemStockCardDimmedCheckbox")) $("#itemStockCardDimmedCheckbox").checked = item.stockCardDimmed !== false;
-    if ($("#itemStockStampTextColorInput")) $("#itemStockStampTextColorInput").value = item.stockStampTextColor || "#C53B3B";
-    if ($("#itemStockStampBorderColorInput")) $("#itemStockStampBorderColorInput").value = item.stockStampBorderColor || "#C53B3B";
-    if ($("#itemStockStampBackgroundColorInput")) $("#itemStockStampBackgroundColorInput").value = item.stockStampBackgroundColor || "rgba(197,59,59,0.04)";
-    if ($("#itemStockStampOpacityInput")) $("#itemStockStampOpacityInput").value = item.stockStampOpacity !== undefined && item.stockStampOpacity !== null ? item.stockStampOpacity : 0.55;
+    if ($("#itemStockStampTextColorInput")) $("#itemStockStampTextColorInput").value = item.stockStampTextColor || item.stockStampColor || "#C44747";
+    if ($("#itemStockStampBorderColorInput")) $("#itemStockStampBorderColorInput").value = item.stockStampBorderColor || item.stockStampColor || "#C44747";
+    if ($("#itemStockStampBackgroundColorInput")) $("#itemStockStampBackgroundColorInput").value = item.stockStampBackgroundColor || "rgba(255,250,247,0.40)";
+    if ($("#itemStockStampOpacityInput")) $("#itemStockStampOpacityInput").value = item.stockStampOpacity !== undefined && item.stockStampOpacity !== null ? item.stockStampOpacity : 0.52;
     if ($("#itemStockStampSizeSelect")) $("#itemStockStampSizeSelect").value = item.stockStampSize || "medium";
     
     currentItemImage = item.imageUrl || "";
@@ -961,10 +961,10 @@ function saveItem(formData) {
     stockLabel: formData.stockLabel !== undefined ? formData.stockLabel : "STOKTA YOK",
     stockStampEnabled: formData.stockStampEnabled !== false,
     stockCardDimmed: formData.stockCardDimmed !== false,
-    stockStampTextColor: formData.stockStampTextColor || "#C53B3B",
-    stockStampBorderColor: formData.stockStampBorderColor || "#C53B3B",
-    stockStampBackgroundColor: formData.stockStampBackgroundColor || "rgba(197,59,59,0.04)",
-    stockStampOpacity: formData.stockStampOpacity !== undefined && formData.stockStampOpacity !== null && formData.stockStampOpacity !== "" ? Number(formData.stockStampOpacity) : 0.55,
+    stockStampTextColor: formData.stockStampTextColor || "#C44747",
+    stockStampBorderColor: formData.stockStampBorderColor || "#C44747",
+    stockStampBackgroundColor: formData.stockStampBackgroundColor || "rgba(255,250,247,0.40)",
+    stockStampOpacity: formData.stockStampOpacity !== undefined && formData.stockStampOpacity !== null && formData.stockStampOpacity !== "" ? Number(formData.stockStampOpacity) : 0.52,
     stockStampSize: formData.stockStampSize || "medium",
     imageUrl: currentItemImage || null,
     nutrition: hasNutrition
@@ -1291,10 +1291,10 @@ function bindEvents() {
       stockLabel: fd.get("stockLabel") ?? "STOKTA YOK",
       stockStampEnabled: fd.get("stockStampEnabled") !== null,
       stockCardDimmed: fd.get("stockCardDimmed") !== null,
-      stockStampTextColor: fd.get("stockStampTextColor") || "#C53B3B",
-      stockStampBorderColor: fd.get("stockStampBorderColor") || "#C53B3B",
-      stockStampBackgroundColor: fd.get("stockStampBackgroundColor") || "rgba(197,59,59,0.04)",
-      stockStampOpacity: fd.get("stockStampOpacity") ?? "0.55",
+      stockStampTextColor: fd.get("stockStampTextColor") || "#C44747",
+      stockStampBorderColor: fd.get("stockStampBorderColor") || "#C44747",
+      stockStampBackgroundColor: fd.get("stockStampBackgroundColor") || "rgba(255,250,247,0.40)",
+      stockStampOpacity: fd.get("stockStampOpacity") ?? "0.52",
       stockStampSize: fd.get("stockStampSize") || "medium",
       portionNote: fd.get("portionNote"),
       caloriesKcal: fd.get("caloriesKcal"),
