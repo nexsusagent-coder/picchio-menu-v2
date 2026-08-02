@@ -814,6 +814,13 @@ h3 { font-size: 26px; line-height: 1.05; }
   font-style: normal;
 }
 
+.card-badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
 .lux-menu-card mark {
   height: fit-content;
   padding: 4px 10px;
@@ -821,6 +828,32 @@ h3 { font-size: 26px; line-height: 1.05; }
   background: rgba(200, 148, 47, 0.12);
   color: var(--gold);
   font-size: 9px;
+  white-space: nowrap;
+}
+
+.lux-menu-card.is-out-of-stock {
+  position: relative;
+  opacity: 0.68;
+  filter: saturate(0.45);
+}
+
+.lux-menu-card.is-out-of-stock .lux-menu-card-image img {
+  filter: grayscale(0.75);
+}
+
+.stock-status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(180, 40, 40, 0.16);
+  border: 1px solid rgba(220, 80, 80, 0.40);
+  color: #e53e3e;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   white-space: nowrap;
 }
 

@@ -10,6 +10,20 @@ const subtitle   = document.querySelector("[data-flow-subtitle]");
 const shell      = document.querySelector(".menu-flow-shell");
 
 /* ─── Yardımcı fonksiyonlar ─── */
+function applyConfigurableText(id, value, visible = true) {
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  const shouldShow =
+    visible !== false &&
+    typeof value === "string" &&
+    value.length > 0;
+
+  el.textContent = typeof value === "string" ? value : "";
+  el.hidden = !shouldShow;
+  el.style.display = shouldShow ? "" : "none";
+}
+
 const scrollToMenuTop = () => {
   document.querySelector(".menu-flow-shell")?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
@@ -360,8 +374,13 @@ const renderItemsStep = () => {
     return;
   }
 
-  const itemCards = items.map((item) => `
-      <article class="lux-menu-card scroll-reveal ${item.imageUrl ? 'has-image' : ''}">
+  const itemCards = items.map((item) => {
+    const isOutOfStock = item.inStock === false;
+    const rawStockLabel = item.stockLabel !== undefined ? item.stockLabel : "Stokta Yok";
+    const stockLabel = String(rawStockLabel || "").trim();
+
+    return `
+      <article class="lux-menu-card scroll-reveal ${item.imageUrl ? 'has-image' : ''} ${isOutOfStock ? 'is-out-of-stock' : ''}">
         ${item.imageUrl ? `
         <div class="lux-menu-card-image" data-lightbox-src="${item.imageUrl}" style="cursor: pointer;">
           <img src="${item.imageUrl}" alt="${item.title}" loading="lazy" />
@@ -370,7 +389,10 @@ const renderItemsStep = () => {
         <div class="lux-menu-card-content">
           <div class="card-header-row">
             ${renderNodeName(node, "menu-card-category")}
-            ${item.featured ? `<mark>Şefin seçimi</mark>` : ""}
+            <div class="card-badges">
+              ${item.featured ? `<mark>Şefin seçimi</mark>` : ""}
+              ${isOutOfStock && stockLabel ? `<span class="stock-status-badge">${stockLabel}</span>` : ""}
+            </div>
           </div>
           <h2>${item.title}</h2>
           ${item.titleEn ? `<em>${item.titleEn}</em>` : ""}
@@ -382,8 +404,8 @@ const renderItemsStep = () => {
           </footer>
         </div>
       </article>
-    `)
-    .join("");
+    `;
+  }).join("");
 
   stage.innerHTML = `${renderSetHeader(node)}${itemCards}`;
 };
@@ -484,31 +506,41 @@ window.applyGlobalSettings = function(settings) {
   }
 
   // 5. Başlıklar & Metinler
-  if (settings.texts) {
+  if (settings.texts || settings.visibility) {
+    const texts = settings.texts || {};
+    const visibility = settings.visibility || {};
+
+    const heroTaglineVal = texts.heroTagline ?? "Premium Cocktail Bar";
+    const heroTaglineVis = visibility.heroTagline !== false;
+    applyConfigurableText("heroTagline", heroTaglineVal, heroTaglineVis);
+
+    const heroEyebrowVal = texts.heroEyebrow ?? "Dijital Menü";
+    const heroEyebrowVis = visibility.heroEyebrow !== false;
+    applyConfigurableText("heroEyebrow", heroEyebrowVal, heroEyebrowVis);
+
     const applyText = (id, text) => {
       const el = document.getElementById(id);
       if (el && text) el.textContent = text;
     };
     
-    applyText("heroEyebrow", settings.texts.heroEyebrow);
-    applyText("heroTitle", settings.texts.heroTitle);
-    applyText("heroSubtitle", settings.texts.heroSubtitle);
-    applyText("contactTitle", settings.texts.contactTitle);
-    applyText("contactSubtitle", settings.texts.contactSubtitle);
+    applyText("heroTitle", texts.heroTitle);
+    applyText("heroSubtitle", texts.heroSubtitle);
+    applyText("contactTitle", texts.contactTitle);
+    applyText("contactSubtitle", texts.contactSubtitle);
     
-    applyText("navMenuDesk", settings.texts.navMenu);
-    applyText("navMenuMob", settings.texts.navMenu);
-    applyText("footerMenu", settings.texts.navMenu);
+    applyText("navMenuDesk", texts.navMenu);
+    applyText("navMenuMob", texts.navMenu);
+    applyText("footerMenu", texts.navMenu);
     
-    applyText("navContactDesk", settings.texts.navContact);
-    applyText("navContactMob", settings.texts.navContact);
-    applyText("footerContact", settings.texts.navContact);
+    applyText("navContactDesk", texts.navContact);
+    applyText("navContactMob", texts.navContact);
+    applyText("footerContact", texts.navContact);
     
-    applyText("navReserveDesk", settings.texts.navReserve);
-    applyText("navReserveMob", settings.texts.navReserve);
+    applyText("navReserveDesk", texts.navReserve);
+    applyText("navReserveMob", texts.navReserve);
     
-    applyText("loadingText", settings.texts.loadingText);
-    applyText("contactWhatsappText", settings.texts.whatsappBtn);
+    applyText("loadingText", texts.loadingText);
+    applyText("contactWhatsappText", texts.whatsappBtn);
   }
   
   // Ekranda Görünen Telefon Butonu Metni

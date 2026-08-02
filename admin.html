@@ -274,8 +274,21 @@
                   </label>
 
                   <label class="full-width">
-                    <span>Ana Sayfa Üst Etiket (Eyebrow)</span>
+                    <span>Üst Marka Metni</span>
+                    <input type="text" id="heroTaglineInput" placeholder="Premium Cocktail Bar" />
+                  </label>
+                  <label class="checkbox-label full-width">
+                    <input type="checkbox" id="heroTaglineShowCheckbox" checked />
+                    <span>Üst marka metnini göster</span>
+                  </label>
+
+                  <label class="full-width">
+                    <span>Dijital Menü Üst Metni</span>
                     <input type="text" id="heroEyebrowInput" placeholder="Dijital Menü" />
+                  </label>
+                  <label class="checkbox-label full-width">
+                    <input type="checkbox" id="heroEyebrowShowCheckbox" checked />
+                    <span>Dijital menü metnini göster</span>
                   </label>
                   <label class="full-width">
                     <span>Ana Sayfa Başlık</span>
@@ -388,8 +401,17 @@
                 <input type="text" name="tastesLike" placeholder="Virgülle ayırın: Gin, Lime, Nane" />
               </label>
               <label class="checkbox-label">
+                <input type="checkbox" name="inStock" id="itemInStockCheckbox" checked />
+                <span>Ürün stokta</span>
+              </label>
+              <label class="checkbox-label">
                 <input type="checkbox" name="featured" />
                 <span>Şefin Seçimi (Öne Çıkan)</span>
+              </label>
+              <label class="full-width">
+                <span>Stokta Yok Mesajı</span>
+                <input type="text" name="stockLabel" id="itemStockLabelInput" placeholder="Stokta Yok" />
+                <small style="display:block; margin-top:2px; font-size:11px; color:#888;">Ürün stokta olmadığında müşteriye gösterilecek mesaj.</small>
               </label>
             </div>
 

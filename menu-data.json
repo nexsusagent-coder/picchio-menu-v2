@@ -15,6 +15,7 @@
       "word2": "Cocktail"
     },
     "texts": {
+      "heroTagline": "Premium Cocktail Bar",
       "heroEyebrow": "Dijital Menü",
       "heroTitle": "Menü",
       "heroSubtitle": "Görüntülemek istediğiniz kategoriyi seçin.",
@@ -25,6 +26,10 @@
       "contactTitle": "Rezervasyon & Bilgi",
       "contactSubtitle": "İletişim",
       "whatsappBtn": "WhatsApp"
+    },
+    "visibility": {
+      "heroTagline": true,
+      "heroEyebrow": true
     },
     "social": {
       "instagram": "https://www.instagram.com/picchiococktail?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="

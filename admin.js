@@ -583,8 +583,10 @@ function renderSettingsEditor() {
   $("#settingsEditor").hidden = false;
 
   const s = menuData.settings || {};
+  const v = s.visibility || {};
+  const t = s.texts || {};
   const form = $("#settingsForm");
-  
+
   if (form.fontPresetSelect) form.fontPresetSelect.value = s.fonts?.preset || "playfair_inter";
   if (form.fontHeadingSelect) form.fontHeadingSelect.value = s.fonts?.heading || "'Playfair Display', Georgia, serif";
   if (form.fontBodySelect) form.fontBodySelect.value = s.fonts?.body || "'Inter', system-ui, sans-serif";
@@ -595,19 +597,24 @@ function renderSettingsEditor() {
   
   form.brandWord1.value = s.brand?.word1 || "Picchio";
   form.brandWord2.value = s.brand?.word2 || "Cocktail";
+
+  if ($("#heroTaglineInput")) $("#heroTaglineInput").value = t.heroTagline ?? "Premium Cocktail Bar";
+  if ($("#heroTaglineShowCheckbox")) $("#heroTaglineShowCheckbox").checked = v.heroTagline !== false;
   
-  form.navMenuInput.value = s.texts?.navMenu || "Menü";
-  form.navContactInput.value = s.texts?.navContact || "İletişim";
-  form.navReserveInput.value = s.texts?.navReserve || "Rezervasyon";
-  form.loadingTextInput.value = s.texts?.loadingText || "Menü hazırlanıyor...";
+  if (form.heroEyebrowInput) form.heroEyebrowInput.value = t.heroEyebrow ?? "Dijital Menü";
+  if ($("#heroEyebrowShowCheckbox")) $("#heroEyebrowShowCheckbox").checked = v.heroEyebrow !== false;
+
+  form.navMenuInput.value = t.navMenu || "Menü";
+  form.navContactInput.value = t.navContact || "İletişim";
+  form.navReserveInput.value = t.navReserve || "Rezervasyon";
+  form.loadingTextInput.value = t.loadingText || "Menü hazırlanıyor...";
   
-  form.heroEyebrowInput.value = s.texts?.heroEyebrow || "Dijital Menü";
-  form.heroTitleInput.value = s.texts?.heroTitle || "Menü";
-  form.heroSubtitleInput.value = s.texts?.heroSubtitle || "Görüntülemek istediğiniz kategoriyi seçin.";
+  form.heroTitleInput.value = t.heroTitle || "Menü";
+  form.heroSubtitleInput.value = t.heroSubtitle || "Görüntülemek istediğiniz kategoriyi seçin.";
   
-  form.contactTitleInput.value = s.texts?.contactTitle || "Rezervasyon & Bilgi";
-  form.contactSubtitleInput.value = s.texts?.contactSubtitle || "İletişim";
-  form.whatsappBtnInput.value = s.texts?.whatsappBtn || "WhatsApp";
+  form.contactTitleInput.value = t.contactTitle || "Rezervasyon & Bilgi";
+  form.contactSubtitleInput.value = t.contactSubtitle || "İletişim";
+  form.whatsappBtnInput.value = t.whatsappBtn || "WhatsApp";
   
   form.instagramUrl.value = s.social?.instagram || "";
   
@@ -879,6 +886,9 @@ function openItemModal(item = null, index = -1) {
     form.price.value = item.price || "";
     form.tastesLike.value = (item.tastesLike || []).join(", ");
     form.featured.checked = !!item.featured;
+
+    if ($("#itemInStockCheckbox")) $("#itemInStockCheckbox").checked = item.inStock !== false;
+    if ($("#itemStockLabelInput")) $("#itemStockLabelInput").value = item.stockLabel !== undefined ? item.stockLabel : "Stokta Yok";
     
     currentItemImage = item.imageUrl || "";
     if (currentItemImage) {
@@ -940,6 +950,8 @@ function saveItem(formData) {
     price: formData.price || null,
     tastesLike,
     featured: formData.featured,
+    inStock: formData.inStock !== false,
+    stockLabel: formData.stockLabel !== undefined ? formData.stockLabel : "Stokta Yok",
     imageUrl: currentItemImage || null,
     nutrition: hasNutrition
       ? {
@@ -1132,6 +1144,7 @@ function bindEvents() {
         word2: form.brandWord2.value
       },
       texts: {
+        heroTagline: $("#heroTaglineInput") ? $("#heroTaglineInput").value : "Premium Cocktail Bar",
         heroEyebrow: form.heroEyebrowInput.value,
         heroTitle: form.heroTitleInput.value,
         heroSubtitle: form.heroSubtitleInput.value,
@@ -1142,6 +1155,10 @@ function bindEvents() {
         contactTitle: form.contactTitleInput.value,
         contactSubtitle: form.contactSubtitleInput.value,
         whatsappBtn: form.whatsappBtnInput.value
+      },
+      visibility: {
+        heroTagline: $("#heroTaglineShowCheckbox") ? $("#heroTaglineShowCheckbox").checked : true,
+        heroEyebrow: $("#heroEyebrowShowCheckbox") ? $("#heroEyebrowShowCheckbox").checked : true,
       },
       social: {
         instagram: form.instagramUrl.value
@@ -1256,6 +1273,8 @@ function bindEvents() {
       price: fd.get("price"),
       tastesLike: fd.get("tastesLike") || "",
       featured: !!fd.get("featured"),
+      inStock: fd.get("inStock") !== null,
+      stockLabel: fd.get("stockLabel") ?? "Stokta Yok",
       portionNote: fd.get("portionNote"),
       caloriesKcal: fd.get("caloriesKcal"),
       proteinG: fd.get("proteinG"),
