@@ -401,18 +401,51 @@
                 <input type="text" name="tastesLike" placeholder="Virgülle ayırın: Gin, Lime, Nane" />
               </label>
               <label class="checkbox-label">
-                <input type="checkbox" name="inStock" id="itemInStockCheckbox" checked />
-                <span>Ürün stokta</span>
-              </label>
-              <label class="checkbox-label">
                 <input type="checkbox" name="featured" />
                 <span>Şefin Seçimi (Öne Çıkan)</span>
               </label>
-              <label class="full-width">
-                <span>Stokta Yok Mesajı</span>
-                <input type="text" name="stockLabel" id="itemStockLabelInput" placeholder="Stokta Yok" />
-                <small style="display:block; margin-top:2px; font-size:11px; color:#888;">Ürün stokta olmadığında müşteriye gösterilecek mesaj.</small>
-              </label>
+
+              <!-- STOK & DAMGA AYARLARI -->
+              <div class="full-width" style="margin-top: 6px; padding: 14px; border: 1px solid var(--border, rgba(0,0,0,0.1)); border-radius: 10px; background: rgba(0,0,0,0.02);">
+                <h4 style="margin: 0 0 10px 0; font-size: 13px; font-weight: 700; color: var(--gold, #c8942f);">Stok & Damga Ayarları</h4>
+                <div class="form-grid">
+                  <label class="checkbox-label full-width">
+                    <input type="checkbox" name="inStock" id="itemInStockCheckbox" checked />
+                    <span>Ürün stokta</span>
+                  </label>
+
+                  <label class="full-width">
+                    <span>Stokta Yok / Damga Mesajı</span>
+                    <input type="text" name="stockLabel" id="itemStockLabelInput" placeholder="STOKTA YOK" />
+                    <small style="display:block; margin-top:2px; font-size:11px; color:#888;">Örn: STOKTA YOK, TÜKENDİ, GEÇİCİ OLARAK YOK, BUGÜN YOK</small>
+                  </label>
+
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="stockStampEnabled" id="itemStockStampEnabledCheckbox" checked />
+                    <span>Çapraz Damga Göster</span>
+                  </label>
+
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="stockCardDimmed" id="itemStockCardDimmedCheckbox" checked />
+                    <span>Kartı Soluk / Gri Yap</span>
+                  </label>
+
+                  <label>
+                    <span>Damga Yazı Rengi</span>
+                    <input type="color" name="stockStampTextColor" id="itemStockStampTextColorInput" value="#B33A3A" />
+                  </label>
+
+                  <label>
+                    <span>Damga Çerçeve Rengi</span>
+                    <input type="color" name="stockStampBorderColor" id="itemStockStampBorderColorInput" value="#B33A3A" />
+                  </label>
+
+                  <label class="full-width">
+                    <span>Damga Arka Plan Rengi</span>
+                    <input type="text" name="stockStampBackgroundColor" id="itemStockStampBackgroundColorInput" value="rgba(179,58,58,0.06)" placeholder="rgba(179,58,58,0.06)" />
+                  </label>
+                </div>
+              </div>
             </div>
 
             <!-- BESİN DEĞERLERİ -->

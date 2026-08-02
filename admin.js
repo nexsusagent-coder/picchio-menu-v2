@@ -888,7 +888,12 @@ function openItemModal(item = null, index = -1) {
     form.featured.checked = !!item.featured;
 
     if ($("#itemInStockCheckbox")) $("#itemInStockCheckbox").checked = item.inStock !== false;
-    if ($("#itemStockLabelInput")) $("#itemStockLabelInput").value = item.stockLabel !== undefined ? item.stockLabel : "Stokta Yok";
+    if ($("#itemStockLabelInput")) $("#itemStockLabelInput").value = item.stockLabel !== undefined ? item.stockLabel : "STOKTA YOK";
+    if ($("#itemStockStampEnabledCheckbox")) $("#itemStockStampEnabledCheckbox").checked = item.stockStampEnabled !== false;
+    if ($("#itemStockCardDimmedCheckbox")) $("#itemStockCardDimmedCheckbox").checked = item.stockCardDimmed !== false;
+    if ($("#itemStockStampTextColorInput")) $("#itemStockStampTextColorInput").value = item.stockStampTextColor || "#B33A3A";
+    if ($("#itemStockStampBorderColorInput")) $("#itemStockStampBorderColorInput").value = item.stockStampBorderColor || "#B33A3A";
+    if ($("#itemStockStampBackgroundColorInput")) $("#itemStockStampBackgroundColorInput").value = item.stockStampBackgroundColor || "rgba(179,58,58,0.06)";
     
     currentItemImage = item.imageUrl || "";
     if (currentItemImage) {
@@ -951,7 +956,12 @@ function saveItem(formData) {
     tastesLike,
     featured: formData.featured,
     inStock: formData.inStock !== false,
-    stockLabel: formData.stockLabel !== undefined ? formData.stockLabel : "Stokta Yok",
+    stockLabel: formData.stockLabel !== undefined ? formData.stockLabel : "STOKTA YOK",
+    stockStampEnabled: formData.stockStampEnabled !== false,
+    stockCardDimmed: formData.stockCardDimmed !== false,
+    stockStampTextColor: formData.stockStampTextColor || "#B33A3A",
+    stockStampBorderColor: formData.stockStampBorderColor || "#B33A3A",
+    stockStampBackgroundColor: formData.stockStampBackgroundColor || "rgba(179,58,58,0.06)",
     imageUrl: currentItemImage || null,
     nutrition: hasNutrition
       ? {
@@ -1274,7 +1284,12 @@ function bindEvents() {
       tastesLike: fd.get("tastesLike") || "",
       featured: !!fd.get("featured"),
       inStock: fd.get("inStock") !== null,
-      stockLabel: fd.get("stockLabel") ?? "Stokta Yok",
+      stockLabel: fd.get("stockLabel") ?? "STOKTA YOK",
+      stockStampEnabled: fd.get("stockStampEnabled") !== null,
+      stockCardDimmed: fd.get("stockCardDimmed") !== null,
+      stockStampTextColor: fd.get("stockStampTextColor") || "#B33A3A",
+      stockStampBorderColor: fd.get("stockStampBorderColor") || "#B33A3A",
+      stockStampBackgroundColor: fd.get("stockStampBackgroundColor") || "rgba(179,58,58,0.06)",
       portionNote: fd.get("portionNote"),
       caloriesKcal: fd.get("caloriesKcal"),
       proteinG: fd.get("proteinG"),

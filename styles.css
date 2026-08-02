@@ -732,6 +732,8 @@ h3 { font-size: 26px; line-height: 1.05; }
 
 /* ─── ÜRÜN KARTI ─── */
 .lux-menu-card {
+  position: relative;
+  overflow: hidden;
   min-height: 200px;
   display: flex;
   flex-direction: column;
@@ -831,30 +833,49 @@ h3 { font-size: 26px; line-height: 1.05; }
   white-space: nowrap;
 }
 
-.lux-menu-card.is-out-of-stock {
-  position: relative;
+.lux-menu-card.is-out-of-stock.is-dimmed {
   opacity: 0.68;
   filter: saturate(0.45);
 }
 
-.lux-menu-card.is-out-of-stock .lux-menu-card-image img {
+.lux-menu-card.is-out-of-stock.is-dimmed .lux-menu-card-image img {
   filter: grayscale(0.75);
 }
 
-.stock-status-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px 10px;
-  border-radius: 20px;
-  background: rgba(180, 40, 40, 0.16);
-  border: 1px solid rgba(220, 80, 80, 0.40);
-  color: #e53e3e;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
+.stock-diagonal-stamp {
+  position: absolute;
+  top: 20px;
+  right: 16px;
+  transform: rotate(-14deg);
+  padding: 5px 14px;
+  border: 2px solid #B33A3A;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+  color: #B33A3A;
+  background-color: rgba(179, 58, 58, 0.06);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  pointer-events: none;
+  z-index: 10;
   white-space: nowrap;
+  user-select: none;
+  max-width: 85%;
+  line-height: 1.2;
+}
+
+@media (max-width: 600px) {
+  .stock-diagonal-stamp {
+    top: 14px;
+    right: 12px;
+    padding: 4px 10px;
+    font-size: 9.5px;
+    letter-spacing: 0.14em;
+    border-width: 1.5px;
+  }
 }
 
 .lux-menu-card h2 {

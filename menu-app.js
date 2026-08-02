@@ -376,11 +376,31 @@ const renderItemsStep = () => {
 
   const itemCards = items.map((item) => {
     const isOutOfStock = item.inStock === false;
-    const rawStockLabel = item.stockLabel !== undefined ? item.stockLabel : "Stokta Yok";
+    const isDimmed = isOutOfStock && item.stockCardDimmed !== false;
+    const isStampEnabled = isOutOfStock && item.stockStampEnabled !== false;
+
+    const rawStockLabel = item.stockLabel !== undefined ? item.stockLabel : "STOKTA YOK";
     const stockLabel = String(rawStockLabel || "").trim();
 
+    const stampTextColor = item.stockStampTextColor || "#B33A3A";
+    const stampBorderColor = item.stockStampBorderColor || "#B33A3A";
+    const stampBgColor = item.stockStampBackgroundColor || "rgba(179,58,58,0.06)";
+
+    const cardClasses = [
+      "lux-menu-card",
+      "scroll-reveal",
+      item.imageUrl ? "has-image" : "",
+      isOutOfStock ? "is-out-of-stock" : "",
+      isDimmed ? "is-dimmed" : ""
+    ].filter(Boolean).join(" ");
+
     return `
-      <article class="lux-menu-card scroll-reveal ${item.imageUrl ? 'has-image' : ''} ${isOutOfStock ? 'is-out-of-stock' : ''}">
+      <article class="${cardClasses}">
+        ${isStampEnabled && stockLabel ? `
+        <div class="stock-diagonal-stamp" style="color: ${stampTextColor}; border-color: ${stampBorderColor}; background-color: ${stampBgColor};">
+          <span>${stockLabel}</span>
+        </div>
+        ` : ""}
         ${item.imageUrl ? `
         <div class="lux-menu-card-image" data-lightbox-src="${item.imageUrl}" style="cursor: pointer;">
           <img src="${item.imageUrl}" alt="${item.title}" loading="lazy" />
@@ -391,7 +411,6 @@ const renderItemsStep = () => {
             ${renderNodeName(node, "menu-card-category")}
             <div class="card-badges">
               ${item.featured ? `<mark>Şefin seçimi</mark>` : ""}
-              ${isOutOfStock && stockLabel ? `<span class="stock-status-badge">${stockLabel}</span>` : ""}
             </div>
           </div>
           <h2>${item.title}</h2>
